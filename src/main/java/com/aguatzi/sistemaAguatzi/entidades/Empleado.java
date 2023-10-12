@@ -1,13 +1,20 @@
 package com.aguatzi.sistemaAguatzi.entidades;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Column;
 import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
+import java.util.Objects;
 
 @Entity
 public class Empleado {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long idEmpleado;
     @Column(length = 45 , nullable = false)
     private String nombre;
 
@@ -95,5 +102,19 @@ public class Empleado {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Empleado)) return false;
+        Empleado empleado = (Empleado) o;
+        return Objects.equals(idEmpleado, empleado.idEmpleado);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idEmpleado);
+    }
 }
+
 
