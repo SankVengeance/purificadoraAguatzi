@@ -2,9 +2,18 @@ package com.aguatzi.sistemaAguatzi.entidades;
 
 import javax.persistence.Entity;
 import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.GenerationType;
+import java.util.Objects;
 
 @Entity
 public class Usuario {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Generación automática de la clave primaria
+    @Column(name = "idUsuario")
+    private int idUsuario;
 
     @Column(name = "nombreUsuario", length = 45, nullable = false)
     private String nombreUsuario;
@@ -16,10 +25,22 @@ public class Usuario {
     private String tipoUsuario;
 
 
+    public Usuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
     public Usuario(String nombreUsuario, String contrasenia, String tipoUsuario) {
         this.nombreUsuario = nombreUsuario;
         this.contrasenia = contrasenia;
         this.tipoUsuario = tipoUsuario;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNombreUsuario() {
@@ -44,6 +65,19 @@ public class Usuario {
 
     public void setTipoUsuario(String tipoUsuario) {
         this.tipoUsuario = tipoUsuario;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Usuario usuario = (Usuario) o;
+        return idUsuario == usuario.idUsuario;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(idUsuario);
     }
 }
 
