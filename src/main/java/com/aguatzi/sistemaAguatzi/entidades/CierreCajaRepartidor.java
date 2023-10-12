@@ -146,7 +146,13 @@ public class CierreCajaRepartidor implements Serializable {
     }
 
     @Override
-<<<<<<< Updated upstream
+    public int hashCode() {
+        int hash = 7;
+        hash = 11 * hash + Objects.hashCode(this.idCierreCajaRepartidor);
+        return hash;
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -159,29 +165,5 @@ public class CierreCajaRepartidor implements Serializable {
         }
         final CierreCajaRepartidor other = (CierreCajaRepartidor) obj;
         return Objects.equals(this.idCierreCajaRepartidor, other.idCierreCajaRepartidor);
-=======
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CierreCajaRepartidor that = (CierreCajaRepartidor) o;
-        return Objects.equals(idCierreCajaRepartidor, that.idCierreCajaRepartidor);
->>>>>>> Stashed changes
     }
-
-    @Override
-    public int hashCode() {
-<<<<<<< Updated upstream
-        int hash = 7;
-        hash = 37 * hash + Objects.hashCode(this.idCierreCajaRepartidor);
-        return hash;
-=======
-        return Objects.hash(idCierreCajaRepartidor);
->>>>>>> Stashed changes
-    }
-
-  
-
-  
-
-  
 }
