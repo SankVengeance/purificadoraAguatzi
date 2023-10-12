@@ -142,15 +142,30 @@ public class CierreCajaRepartidor {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        CierreCajaRepartidor that = (CierreCajaRepartidor) o;
-        return Objects.equals(idCierreCajaLocal, that.idCierreCajaLocal);
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CierreCajaRepartidor other = (CierreCajaRepartidor) obj;
+        return Objects.equals(this.idCierreCajaRepartidor, other.idCierreCajaRepartidor);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idCierreCajaLocal);
+        int hash = 7;
+        hash = 37 * hash + Objects.hashCode(this.idCierreCajaRepartidor);
+        return hash;
     }
+
+  
+
+  
+
+  
 }
