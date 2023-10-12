@@ -1,0 +1,20 @@
+# Maven target directory
+/target/
+
+# Eclipse project files
+.classpath
+.project
+.settings/
+
+# IntelliJ IDEA project files
+.idea/
+*.iml
+
+# macOS-specific files
+.DS_Store
+
+# Node.js dependencies (if applicable)
+/node_modules/
+
+# Custom build directory (if applicable)
+/build/
