@@ -15,7 +15,7 @@ public class Produccion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idProduccion")
+    @Column(name = "idProduccion", nullable = false)
     private int idProduccion;
 
     @Column(name = "fecha", nullable = false)

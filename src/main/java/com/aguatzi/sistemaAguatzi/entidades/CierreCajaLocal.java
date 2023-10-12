@@ -14,7 +14,7 @@ public class CierreCajaLocal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCierreCajaLocal")
+    @Column(name = "idCierreCajaLocal", nullable = false)
     private int idCierreCajaLocal;
 
     @Column(name = "lecturaMedidor", nullable = false)

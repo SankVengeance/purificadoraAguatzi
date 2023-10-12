@@ -15,6 +15,7 @@ public class Horario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idHorario", nullable = false)
     private Long idHorario;
 
     @Column(name ="dia",length = 10)

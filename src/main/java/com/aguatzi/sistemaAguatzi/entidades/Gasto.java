@@ -15,19 +15,20 @@ public class Gasto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idGasto", nullable = false)
     private Long idGasto;
 
-    @Column(name = "monto")
+    @Column(name = "monto", nullable = false)
     private int monto;
 
-    @Column(name = "fecha")
+    @Column(name = "fecha", nullable = false)
     private Date fecha;
 
-    @Column(name = "descripcion",length = 150)
+    @Column(name = "descripcion",length = 150, nullable = false)
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "idCierreCajaRepartidor")
+    @JoinColumn(name = "idCierreCajaRepartidor", nullable = false)
     private CierreCajaRepartidor cierreCajaRepartidor;
 
     public Gasto(int monto, Date fecha, String descripcion, CierreCajaRepartidor cierreCajaRepartidor) {

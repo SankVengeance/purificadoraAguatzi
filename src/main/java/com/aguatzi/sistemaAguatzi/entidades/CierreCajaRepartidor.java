@@ -14,37 +14,38 @@ public class CierreCajaRepartidor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idCierreCajaLocal;
+    @Column(name = "idCierreCajaRepartidor", nullable = false)
+    private Long idCierreCajaRepartidor;
 
-    @Column(name = "garrafonesVendidos")
+    @Column(name = "garrafonesVendidos", nullable = false)
     private int garrafonesVendidos;
 
-    @Column(name = "garrafonesDiados")
+    @Column(name = "garrafonesDiados", nullable = false)
     private int garrafonesFlados;
 
-    @Column(name = "garrafonesDefectuosos")
+    @Column(name = "garrafonesDefectuosos", nullable = false)
     private int garrafonesDefectuosos;
 
-    @Column(name = "pagadosTransferencia")
+    @Column(name = "pagadosTransferencia", nullable = false)
     private int pagadosTransferencia;
 
-    @Column(name = "dineroReportado")
+    @Column(name = "dineroReportado", nullable = false)
     private int dineroReportado;
 
-    @Column(name = "gastosExtra")
+    @Column(name = "gastosExtra", nullable = false)
     private int gastosExtra;
 
-    @Column(name = "especificaciones",length = 150)
+    @Column(name = "especificaciones",length = 150, nullable = false)
     private String especificaciones;
 
-    @Column(name = "dineroVentaTotal")
+    @Column(name = "dineroVentaTotal", nullable = false)
     private int dineroVentaTotal;
 
-    @Column(name = "dineroFaltante")
+    @Column(name = "dineroFaltante", nullable = false)
     private int dineroFaltante;
 
     @ManyToOne
-    @JoinColumn(name = "idEmpleado")
+    @JoinColumn(name = "idEmpleado", nullable = false)
     private Empleado empleado;
 
     public CierreCajaRepartidor(int garrafonesVendidos, int garrafonesFlados, int garrafonesDefectuosos, int pagadosTransferencia, int dineroReportado, int gastosExtra, String especificaciones, int dineroVentaTotal, int dineroFaltante, Empleado empleado) {

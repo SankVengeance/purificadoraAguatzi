@@ -12,7 +12,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Generación automática de la clave primaria
-    @Column(name = "idUsuario")
+    @Column(name = "idUsuario", nullable = false)
     private int idUsuario;
 
     @Column(name = "nombreUsuario", length = 45, nullable = false)
