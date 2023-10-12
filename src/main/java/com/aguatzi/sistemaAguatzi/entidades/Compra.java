@@ -1,5 +1,6 @@
 package com.aguatzi.sistemaAguatzi.entidades;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -10,7 +11,7 @@ import javax.persistence.JoinColumn;
 import java.util.Objects;
 
 @Entity
-public class Compra {
+public class Compra implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +30,9 @@ public class Compra {
     @ManyToOne
     @JoinColumn(name = "idUsuario")
     private Usuario usuario;
+
+    public Compra() {
+    }
 
     public Compra(int idCompra) {
         this.idCompra = idCompra;

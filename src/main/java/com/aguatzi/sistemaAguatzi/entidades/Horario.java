@@ -1,5 +1,6 @@
 package com.aguatzi.sistemaAguatzi.entidades;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import java.sql.Time;
 import java.util.Objects;
 
 @Entity
-public class Horario {
+public class Horario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +31,9 @@ public class Horario {
     @ManyToOne
     @JoinColumn(name = "idEmpleado")
     private Empleado empleado;
+
+    public Horario() {
+    }
 
     public Horario(String dia, Time horaEntrada, Time horaSalida, Empleado empleado) {
         this.dia = dia;

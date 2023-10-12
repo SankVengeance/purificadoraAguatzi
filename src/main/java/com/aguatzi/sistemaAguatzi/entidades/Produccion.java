@@ -1,5 +1,6 @@
 package com.aguatzi.sistemaAguatzi.entidades;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-public class Produccion {
+public class Produccion implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,6 +28,9 @@ public class Produccion {
     @ManyToOne
     @JoinColumn(name = "idCierreCajaLocal", nullable = false)
     private CierreCajaLocal cierreCajaLocal;
+
+    public Produccion() {
+    }
 
     public Produccion(int idProduccion) {
         this.idProduccion = idProduccion;

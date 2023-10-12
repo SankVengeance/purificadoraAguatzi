@@ -1,5 +1,6 @@
 package com.aguatzi.sistemaAguatzi.entidades;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-public class Gasto {
+public class Gasto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +31,9 @@ public class Gasto {
     @ManyToOne
     @JoinColumn(name = "idCierreCajaRepartidor", nullable = false)
     private CierreCajaRepartidor cierreCajaRepartidor;
+
+    public Gasto() {
+    }
 
     public Gasto(int monto, Date fecha, String descripcion, CierreCajaRepartidor cierreCajaRepartidor) {
         this.monto = monto;

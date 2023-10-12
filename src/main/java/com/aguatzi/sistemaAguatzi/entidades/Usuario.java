@@ -1,5 +1,6 @@
 package com.aguatzi.sistemaAguatzi.entidades;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
@@ -8,7 +9,7 @@ import javax.persistence.GenerationType;
 import java.util.Objects;
 
 @Entity
-public class Usuario {
+public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Generación automática de la clave primaria
@@ -23,6 +24,9 @@ public class Usuario {
 
     @Column(name = "tipoUsuario", length = 15, nullable = false)
     private String tipoUsuario;
+
+    public Usuario() {
+    }
 
 
     public Usuario(int idUsuario) {

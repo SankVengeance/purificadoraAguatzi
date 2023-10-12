@@ -1,5 +1,6 @@
 package com.aguatzi.sistemaAguatzi.entidades;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -10,7 +11,7 @@ import javax.persistence.JoinColumn;
 import java.util.Objects;
 
 @Entity
-public class CierreCajaRepartidor {
+public class CierreCajaRepartidor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -47,6 +48,9 @@ public class CierreCajaRepartidor {
     @ManyToOne
     @JoinColumn(name = "idEmpleado", nullable = false)
     private Empleado empleado;
+
+    public CierreCajaRepartidor() {
+    }
 
     public CierreCajaRepartidor(int garrafonesVendidos, int garrafonesFlados, int garrafonesDefectuosos, int pagadosTransferencia, int dineroReportado, int gastosExtra, String especificaciones, int dineroVentaTotal, int dineroFaltante, Empleado empleado) {
         this.garrafonesVendidos = garrafonesVendidos;
@@ -142,6 +146,7 @@ public class CierreCajaRepartidor {
     }
 
     @Override
+<<<<<<< Updated upstream
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -154,13 +159,24 @@ public class CierreCajaRepartidor {
         }
         final CierreCajaRepartidor other = (CierreCajaRepartidor) obj;
         return Objects.equals(this.idCierreCajaRepartidor, other.idCierreCajaRepartidor);
+=======
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CierreCajaRepartidor that = (CierreCajaRepartidor) o;
+        return Objects.equals(idCierreCajaRepartidor, that.idCierreCajaRepartidor);
+>>>>>>> Stashed changes
     }
 
     @Override
     public int hashCode() {
+<<<<<<< Updated upstream
         int hash = 7;
         hash = 37 * hash + Objects.hashCode(this.idCierreCajaRepartidor);
         return hash;
+=======
+        return Objects.hash(idCierreCajaRepartidor);
+>>>>>>> Stashed changes
     }
 
   

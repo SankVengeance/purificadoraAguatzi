@@ -1,5 +1,6 @@
 package com.aguatzi.sistemaAguatzi.entidades;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -10,7 +11,7 @@ import javax.persistence.JoinColumn;
 import java.util.Objects;
 
 @Entity
-public class CierreCajaLocal {
+public class CierreCajaLocal implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,6 +56,9 @@ public class CierreCajaLocal {
     private Empleado empleado;
 
     // Constructor, getters y setters, y otros métodos
+
+    public CierreCajaLocal() {
+    }
 
 
     public CierreCajaLocal(int idCierreCajaLocal) {
