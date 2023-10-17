@@ -1,6 +1,7 @@
 package com.aguatzi.sistemaAguatzi.vista;
 
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -162,6 +163,21 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
     @Override
     public void agregarIniciarSesionListener(ActionListener actionListener) {
         btnIniciarSesion.addActionListener(actionListener);
+    }
+
+    @Override
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Aviso", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    @Override
+    public void mostrarMensajeError(String mensajeError) {
+        JOptionPane.showMessageDialog(this, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    @Override
+    public void eliminarVentana() {
+        this.dispose();
     }
 
   
