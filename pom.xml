@@ -12,6 +12,11 @@
         <exec.mainClass>com.aguatzi.sistemaAguatzi.PurificadoraAguatzi</exec.mainClass>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE160</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.0-api -->
         <dependency>
             <groupId>mysql</groupId>

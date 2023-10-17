@@ -5,6 +5,9 @@
 
 package com.aguatzi.sistemaAguatzi;
 
+import com.aguatzi.sistemaAguatzi.controladores.ControladorIniciarSesion;
+import com.aguatzi.sistemaAguatzi.vista.FrmIniciarSesion;
+
 /**
  *
  * @author Omar Guerrero
@@ -12,6 +15,8 @@ package com.aguatzi.sistemaAguatzi;
 public class PurificadoraAguatzi {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        FrmIniciarSesion frmIniciarSesion = new FrmIniciarSesion();
+        ControladorIniciarSesion controladorIniciarSesion = new ControladorIniciarSesion(frmIniciarSesion);
+        frmIniciarSesion.setVisible(true);
     }
 }

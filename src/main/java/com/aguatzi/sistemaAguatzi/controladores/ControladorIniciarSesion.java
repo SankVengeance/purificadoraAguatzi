@@ -9,6 +9,7 @@ import com.aguatzi.sistemaAguatzi.utils.Encriptador;
 import com.aguatzi.sistemaAguatzi.vista.IFrmIniciarSesion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,6 +37,8 @@ public class ControladorIniciarSesion {
             Boolean coincide = Encriptador.verificarPasswordConHash(contrasenia, usuario.getContrasenia());
             if (coincide) {
                 System.out.println("Sesión iniciada");
+            }else{
+                System.out.println("Error iniciar sesion");
             }
         }
     }
