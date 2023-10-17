@@ -6,6 +6,7 @@ package com.aguatzi.sistemaAguatzi.controladores;
 
 import com.aguatzi.sistemaAguatzi.entidades.Usuario;
 import com.aguatzi.sistemaAguatzi.utils.Encriptador;
+import com.aguatzi.sistemaAguatzi.vista.FrmMenuPrincipalLocal;
 import com.aguatzi.sistemaAguatzi.vista.IFrmIniciarSesion;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,10 +36,25 @@ public class ControladorIniciarSesion {
             Usuario usuario = unitOfWork.usuariosRepository().obtenPorUsername(nombreUsuario);
             String contrasenia = frmIniciarSesion.getContrasenia();
             Boolean coincide = Encriptador.verificarPasswordConHash(contrasenia, usuario.getContrasenia());
+            String tipoUsuario = usuario.getTipoUsuario();
             if (coincide) {
-                System.out.println("Sesión iniciada");
+                frmIniciarSesion.eliminarVentana();
+                switch (tipoUsuario) {
+                    case "local":
+                        FrmMenuPrincipalLocal frmMenuPrincipalLocal = new FrmMenuPrincipalLocal();
+                        frmMenuPrincipalLocal.setVisible(true);
+                        break;
+                    case "repartidor":
+                        
+                        break;
+                    case "admin":
+                        
+                        break;                         
+                    default:
+                        frmIniciarSesion.mostrarMensajeError("No se pudo iniciar sesión");
+                }
             }else{
-                System.out.println("Error iniciar sesion");
+                frmIniciarSesion.mostrarMensajeError("No se pudo iniciar sesión");
             }
         }
     }

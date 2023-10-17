@@ -13,5 +13,8 @@ import java.awt.event.ActionListener;
 public interface IFrmIniciarSesion {
     public String getNombreUsuario();
     public String getContrasenia();
+    public void mostrarMensaje(String mensaje);
+    public void mostrarMensajeError(String mensajeError);
+    public void eliminarVentana();
     public void agregarIniciarSesionListener(ActionListener actionListener);
 }
