@@ -7,8 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.GenerationType;
 import java.util.Objects;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+    @NamedQuery(
+            name = "Usuario.findByUsername",
+            query = "SELECT u FROM Usuario u WHERE u.nombreUsuario like :nombreUsuario"
+    )
+})
 public class Usuario implements Serializable {
 
     @Id
@@ -19,7 +27,7 @@ public class Usuario implements Serializable {
     @Column(name = "nombreUsuario", length = 45, nullable = false)
     private String nombreUsuario;
 
-    @Column(name = "contrasenia", length = 45, nullable = false)
+    @Column(name = "contrasenia", length = 100, nullable = false)
     private String contrasenia;
 
     @Column(name = "tipoUsuario", length = 15, nullable = false)

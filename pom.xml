@@ -12,6 +12,11 @@
         <exec.mainClass>com.aguatzi.sistemaAguatzi.PurificadoraAguatzi</exec.mainClass>
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>org.netbeans.external</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>RELEASE160</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.0-api -->
         <dependency>
             <groupId>mysql</groupId>
@@ -59,5 +64,11 @@
             <version>2.7.10</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>at.favre.lib</groupId>
+            <artifactId>bcrypt</artifactId>
+            <version>0.10.2</version>
+        </dependency>
+
     </dependencies>
 </project>

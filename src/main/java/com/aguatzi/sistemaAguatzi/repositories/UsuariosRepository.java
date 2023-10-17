@@ -6,6 +6,7 @@ package com.aguatzi.sistemaAguatzi.repositories;
 
 import com.aguatzi.sistemaAguatzi.entidades.Usuario;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -15,6 +16,13 @@ public class UsuariosRepository extends RepositoryBase<Usuario>{
     
     public UsuariosRepository(EntityManager entityManager) {
         super(entityManager);
+    }
+    
+    public Usuario obtenPorUsername(String nombreUsuario){
+        TypedQuery<Usuario> query = entityManager.createNamedQuery("Usuario.findByUsername", Usuario.class);
+        query.setParameter("nombreUsuario", nombreUsuario);
+        Usuario usuario = query.getSingleResult();
+        return usuario;
     }
     
 }
