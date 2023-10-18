@@ -38,7 +38,7 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
         background3.setPreferredSize(new java.awt.Dimension(600, 400));
         background3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        head3.setBackground(new java.awt.Color(0, 102, 255));
+        head3.setBackground(new java.awt.Color(58, 138, 236));
 
         txtBienvenida.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 24)); // NOI18N
         txtBienvenida.setForeground(new java.awt.Color(255, 255, 255));
@@ -71,7 +71,7 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
 
         background3.add(head3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 90));
 
-        btnMiHorario.setBackground(new java.awt.Color(0, 102, 255));
+        btnMiHorario.setBackground(new java.awt.Color(58, 138, 236));
         btnMiHorario.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
         btnMiHorario.setForeground(new java.awt.Color(255, 255, 255));
         btnMiHorario.setText("Mi horario");
@@ -84,7 +84,7 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
         });
         background3.add(btnMiHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 180, 40));
 
-        btnCerrarSesion.setBackground(new java.awt.Color(0, 102, 255));
+        btnCerrarSesion.setBackground(new java.awt.Color(58, 138, 236));
         btnCerrarSesion.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
         btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnCerrarSesion.setText("Cerrar Sesión");
@@ -97,7 +97,7 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
         });
         background3.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 180, 40));
 
-        btnCierreCaja.setBackground(new java.awt.Color(0, 102, 255));
+        btnCierreCaja.setBackground(new java.awt.Color(58, 138, 236));
         btnCierreCaja.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
         btnCierreCaja.setForeground(new java.awt.Color(255, 255, 255));
         btnCierreCaja.setText("Cierre De Caja");

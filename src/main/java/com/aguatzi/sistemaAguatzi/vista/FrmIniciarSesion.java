@@ -43,7 +43,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
         Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(58, 138, 236));
 
         lblBienvenido.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 36)); // NOI18N
         lblBienvenido.setForeground(new java.awt.Color(255, 255, 255));
@@ -95,7 +95,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
         lblCorreo1.setText("Usuario");
         Background.add(lblCorreo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 180, 20));
 
-        btnIniciarSesion.setBackground(new java.awt.Color(0, 102, 204));
+        btnIniciarSesion.setBackground(new java.awt.Color(58, 138, 236));
         btnIniciarSesion.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 12)); // NOI18N
         btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciarSesion.setText("Iniciar Sesión");
