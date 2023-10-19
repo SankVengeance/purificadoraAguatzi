@@ -17,6 +17,7 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
      * Creates new form FrmCierreCajaLocal
      */
     public FrmCierreCajaLocal() {
+        setCalculable();
         initComponents();
     }
 
@@ -310,93 +311,92 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
     public String getLecturaMedidor() {
         return txtLecturaMedidor.getText();
     }
-    
+
     @Override
     public String getLecturaAnterior() {
         return txtLecturaAnterior.getText();
     }
-    
+
     @Override
     public String getGarrafonesRuta() {
         return txtGarrafonesRuta.getText();
     }
-    
+
     @Override
     public String getGarrafonesVaciados() {
         return txtGarrafonesVaciados.getText();
     }
-    
+
     @Override
     public String getPagadosTrasferencia() {
         return txtPagadosTrasferencia.getText();
     }
-    
+
     @Override
     public String getGarrafonesNuevos() {
         return txtGarrafonesNuevos.getText();
     }
-    
+
     @Override
     public String getDineroCaja() {
         return txtDineroCaja.getText();
     }
-    
+
     @Override
     public void setLitrosVendidos(String litros) {
         txtLitrosVendidos.setText(litros);
     }
-    
+
     @Override
     public void setGarrafonesVendidos(String garraafonesVendidos) {
         txtGarrafonesVendidos.setText(garraafonesVendidos);
     }
-    
+
     @Override
     public void setDineroTotal(String dineroTotal) {
         txtDineroTotal.setText(dineroTotal);
     }
-    
+
     @Override
     public void setFaltante(String faltante) {
         txtFaltante.setText(faltante);
     }
-    
+
     @Override
     public void agregarCalcularListener(ActionListener actionListener) {
         btnCalcular.addActionListener(actionListener);
     }
-    
+
     @Override
     public void agregarLimpiarListener(ActionListener actionListener) {
         btnLimpiar.addActionListener(actionListener);
     }
-    
+
     @Override
     public void agregarGuardarListener(ActionListener actionListener) {
         btnGuardar.addActionListener(actionListener);
     }
-    
+
     @Override
     public void agregarCancelarListener(ActionListener actionListener) {
         btnCalcular.addActionListener(actionListener);
     }
-    
+
     @Override
     public void mostrarMensaje(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje, "Aviso", JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
     @Override
     public void mostrarMensajeError(String mensajeError) {
         JOptionPane.showMessageDialog(this, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
     }
-    
+
     @Override
     public void eliminarVentana() {
         this.dispose();
     }
 
-    
     private void limpiarCampos() {
         txtLecturaMedidor.setText("");
         txtLecturaAnterior.setText("");
@@ -411,8 +411,22 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
         txtFaltante.setText("");
     }
 
+    private boolean contieneSoloNumeros(String campo) {
+        return campo.matches("[0-9]+");
+    }
+
+    private boolean CampoVacio(String campo) {
+        return campo.isEmpty();
+    }
+
     @Override
     public boolean verificarCampos() {
+        if (contieneSoloNumeros(txtLecturaMedidor.getText()) == false || contieneSoloNumeros(txtLecturaAnterior.getName()) == false || contieneSoloNumeros(txtGarrafonesRuta.getText()) == false || contieneSoloNumeros(txtGarrafonesVaciados.getText()) == false || contieneSoloNumeros(txtPagadosTrasferencia.getText()) == false || contieneSoloNumeros(txtGarrafonesNuevos.getText()) == false || contieneSoloNumeros(txtDineroCaja.getText()) == false) {
+            return false;
+        }
+        if (CampoVacio(txtLecturaMedidor.getText()) == true || CampoVacio(txtLecturaAnterior.getText()) == true || CampoVacio(txtGarrafonesRuta.getText()) == true || CampoVacio(txtGarrafonesVaciados.getText()) == true || CampoVacio(txtPagadosTrasferencia.getText()) == true || CampoVacio(txtGarrafonesNuevos.getText()) == true || CampoVacio(txtDineroCaja.getText()) == true) {
+            return false;
+        }
         return true;
     }
 
@@ -422,13 +436,13 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
     }
 
     @Override
-    public void setGuardable(){
+    public void setGuardable() {
         this.btnCalcular.setEnabled(false);
         this.btnGuardar.setEnabled(true);
     }
-    
+
     @Override
-    public void setCalculable(){
+    public void setCalculable() {
         this.btnCalcular.setEnabled(true);
         this.btnGuardar.setEnabled(false);
         this.limpiarCampos();
@@ -436,6 +450,6 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
 
     @Override
     public void setNombreUsuario(String nombreUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        txtUsuario.setText(nombreUsuario);
     }
 }

@@ -13,9 +13,9 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
      */
     public FrmMenuPrincipalLocal() {
         initComponents();
-        
+
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -133,11 +133,11 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
 
 
     private void btnMiHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMiHorarioActionPerformed
-        
+
     }//GEN-LAST:event_btnMiHorarioActionPerformed
 
     private void btnCerrarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSesionActionPerformed
-        
+
     }//GEN-LAST:event_btnCerrarSesionActionPerformed
 
     private void btnCierreCajaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCierreCajaActionPerformed
@@ -159,12 +159,12 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
     public void agregarCierreDeCajaLocalListener(ActionListener actionListener) {
         btnCierreCaja.addActionListener(actionListener);
     }
-    
+
     @Override
     public void agregarMiHorarioListener(ActionListener actionListener) {
         btnMiHorario.addActionListener(actionListener);
     }
-    
+
     @Override
     public void agregarCerrarSesionListener(ActionListener actionListener) {
         btnCerrarSesion.addActionListener(actionListener);
@@ -174,5 +174,10 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
     public void setNombreUsuario(String nombreUsuario) {
         txtNombreUsuario.setText(nombreUsuario);
     }
-    
+
+    @Override
+    public void eliminarVentana() {
+        this.dispose();
+    }
+
 }

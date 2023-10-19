@@ -3,17 +3,14 @@ package com.aguatzi.sistemaAguatzi.vista;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Omar Guerrero
  */
 public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarSesion {
 
-
-
     public FrmIniciarSesion() {
-       initComponents();
+        initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -129,7 +126,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-      
+
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
 
@@ -155,7 +152,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
 
     @Override
     public String getContrasenia() {
-         String intentoPassword = new String(this.txtContrasenia.getPassword());
+        String intentoPassword = new String(this.txtContrasenia.getPassword());
         return intentoPassword;
 
     }
@@ -181,15 +178,21 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
     }
 
     @Override
-    public void verificarCampos() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean verificarCampos() {
+        if (CampoVacio(txtUsuario.getText()) == true || CampoVacio(txtContrasenia.getToolTipText()) == true) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public void limpiarCampos() {
-      txtUsuario.setText("");
-      txtContrasenia.setText("");
+        txtUsuario.setText("");
+        txtContrasenia.setText("");
     }
 
-  
+    private boolean CampoVacio(String campo) {
+        return campo.isEmpty();
+    }
+
 }
