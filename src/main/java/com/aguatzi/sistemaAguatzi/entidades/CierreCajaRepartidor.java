@@ -52,7 +52,7 @@ public class CierreCajaRepartidor implements Serializable {
     public CierreCajaRepartidor() {
     }
 
-    public CierreCajaRepartidor(int garrafonesVendidos, int garrafonesFlados, int garrafonesDefectuosos, int pagadosTransferencia, int dineroReportado, int gastosExtra, String especificaciones, int dineroVentaTotal, int dineroFaltante, Empleado empleado) {
+    public CierreCajaRepartidor(int garrafonesVendidos, int garrafonesFlados, int garrafonesDefectuosos, int pagadosTransferencia, float dineroReportado, float gastosExtra, String especificaciones, float dineroVentaTotal, float dineroFaltante, Empleado empleado) {
         this.garrafonesVendidos = garrafonesVendidos;
         this.garrafonesFlados = garrafonesFlados;
         this.garrafonesDefectuosos = garrafonesDefectuosos;
@@ -64,6 +64,8 @@ public class CierreCajaRepartidor implements Serializable {
         this.dineroFaltante = dineroFaltante;
         this.empleado = empleado;
     }
+
+
 
     public int getGarrafonesVendidos() {
         return garrafonesVendidos;

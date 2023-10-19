@@ -65,7 +65,7 @@ public class CierreCajaLocal implements Serializable {
         this.idCierreCajaLocal = idCierreCajaLocal;
     }
 
-    public CierreCajaLocal(int lecturaMedidor, int lecturaAnterior, int garrafonesRepartidor, int garrafonesVaciados, int pagadosTransferencia, int garrafonesNuevosVendidos, int dineroCaja, int litrosVendidos, int garrafonesVendidos, int dineroTotal, int faltante, Empleado empleado) {
+    public CierreCajaLocal(float lecturaMedidor, float lecturaAnterior, int garrafonesRepartidor, int garrafonesVaciados, int pagadosTransferencia, int garrafonesNuevosVendidos, float dineroCaja, float litrosVendidos, int garrafonesVendidos, float dineroTotal, float faltante, Empleado empleado) {
         this.lecturaMedidor = lecturaMedidor;
         this.lecturaAnterior = lecturaAnterior;
         this.garrafonesRepartidor = garrafonesRepartidor;
@@ -79,6 +79,8 @@ public class CierreCajaLocal implements Serializable {
         this.faltante = faltante;
         this.empleado = empleado;
     }
+
+   
 
     public Long getIdCierreCajaLocal() {
         return idCierreCajaLocal;

@@ -52,6 +52,8 @@ public class Empleado implements Serializable {
         this.usuario = usuario;
     }
 
+ 
+
     public String getNombre() {
         return nombre;
     }

@@ -35,12 +35,14 @@ public class Gasto implements Serializable {
     public Gasto() {
     }
 
-    public Gasto(int monto, Date fecha, String descripcion, CierreCajaRepartidor cierreCajaRepartidor) {
+    public Gasto(float monto, Date fecha, String descripcion, CierreCajaRepartidor cierreCajaRepartidor) {
         this.monto = monto;
         this.fecha = fecha;
         this.descripcion = descripcion;
         this.cierreCajaRepartidor = cierreCajaRepartidor;
     }
+
+
 
     public float getMonto() {
         return monto;

@@ -36,11 +36,13 @@ public class Produccion implements Serializable {
         this.idProduccion = idProduccion;
     }
 
-    public Produccion(Date fecha, int cantidad, CierreCajaLocal cierreCajaLocal) {
+    public Produccion(Date fecha, float cantidad, CierreCajaLocal cierreCajaLocal) {
         this.fecha = fecha;
         this.cantidad = cantidad;
         this.cierreCajaLocal = cierreCajaLocal;
     }
+
+ 
 
     public Long getIdProduccion() {
         return idProduccion;
