@@ -9,8 +9,16 @@ import javax.persistence.Column;
 import javax.persistence.OneToOne;
 import javax.persistence.JoinColumn;
 import java.util.Objects;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQueries({
+    @NamedQuery(
+        name = "Empleado.findByUsuario",
+        query = "SELECT e FROM Empleado e WHERE e.usuario = :usuario"
+    )
+})
 public class Empleado implements Serializable {
 
     @Id
