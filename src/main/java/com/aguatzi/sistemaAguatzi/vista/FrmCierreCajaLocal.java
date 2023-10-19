@@ -362,11 +362,6 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
     }
     
     @Override
-    public void setUsuario(String usuario) {
-        txtUsuario.setText(usuario);
-    }
-    
-    @Override
     public void agregarCalcularListener(ActionListener actionListener) {
         btnCalcular.addActionListener(actionListener);
     }
