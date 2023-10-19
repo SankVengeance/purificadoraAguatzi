@@ -379,7 +379,7 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
 
     @Override
     public void agregarCancelarListener(ActionListener actionListener) {
-        btnCalcular.addActionListener(actionListener);
+        btnCancelar.addActionListener(actionListener);
     }
 
     @Override
