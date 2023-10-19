@@ -180,5 +180,16 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
         this.dispose();
     }
 
+    @Override
+    public void verificaCampos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void limpiarCampos() {
+      txtUsuario.setText("");
+      txtContrasenia.setText("");
+    }
+
   
 }

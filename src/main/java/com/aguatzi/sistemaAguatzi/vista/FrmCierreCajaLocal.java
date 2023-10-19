@@ -418,7 +418,7 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
 
     @Override
     public void verificarCampos() {
-
+        
     }
 
     @Override
