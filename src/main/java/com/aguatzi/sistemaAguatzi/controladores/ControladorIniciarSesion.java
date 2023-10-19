@@ -34,9 +34,16 @@ public class ControladorIniciarSesion {
         public void actionPerformed(ActionEvent e) {
             String nombreUsuario = frmIniciarSesion.getNombreUsuario();
             Usuario usuario = unitOfWork.usuariosRepository().obtenPorUsername(nombreUsuario);
+
+            if (usuario == null) {
+                frmIniciarSesion.mostrarMensajeError("No se pudo iniciar sesión");
+                return;
+            }
+
             String contrasenia = frmIniciarSesion.getContrasenia();
             Boolean coincide = Encriptador.verificarPasswordConHash(contrasenia, usuario.getContrasenia());
             String tipoUsuario = usuario.getTipoUsuario();
+
             if (coincide) {
                 frmIniciarSesion.eliminarVentana();
                 switch (tipoUsuario) {
@@ -46,15 +53,15 @@ public class ControladorIniciarSesion {
                         frmMenuPrincipalLocal.setVisible(true);
                         break;
                     case "repartidor":
-                        
+                        // Handle repartidor logic
                         break;
                     case "admin":
-                        
-                        break;                         
+                        // Handle admin logic
+                        break;
                     default:
                         frmIniciarSesion.mostrarMensajeError("No se pudo iniciar sesión");
                 }
-            }else{
+            } else {
                 frmIniciarSesion.mostrarMensajeError("No se pudo iniciar sesión");
             }
         }

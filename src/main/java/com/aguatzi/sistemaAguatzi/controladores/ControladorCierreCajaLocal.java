@@ -5,6 +5,7 @@
 package com.aguatzi.sistemaAguatzi.controladores;
 
 import com.aguatzi.sistemaAguatzi.entidades.CierreCajaLocal;
+import com.aguatzi.sistemaAguatzi.entidades.Empleado;
 import com.aguatzi.sistemaAguatzi.entidades.Usuario;
 import com.aguatzi.sistemaAguatzi.vista.FrmMenuPrincipalLocal;
 import com.aguatzi.sistemaAguatzi.vista.IFrmCierreCajaLocal;
@@ -92,8 +93,18 @@ public class ControladorCierreCajaLocal {
             int garrafonesVendidosRedondeado = (int)garrafonesVendidos;
             float dineroTotal = garrafonesVendidos*PRECIO_GARRAFON_RELLEANDO+garrafonesNuevos*PRECIO_GARRAFON_NUEVO-pagosTransferencia*PRECIO_GARRAFON_RELLEANDO;
             float dineroFaltante = dineroTotal-dineroCaja;
-            CierreCajaLocal cierreCajaLocal = new CierreCajaLocal(lecturaMedidor, lecturaAnterior, garrafonesRuta, garrafonesVaciados, pagosTransferencia, garrafonesNuevos, dineroCaja, litrosVendidos, garrafonesVendidosRedondeado, dineroTotal, dineroFaltante, null);
+            Empleado empleado = unitOfWork.empleadosRepository().obtenerPorUsuario(usuario);
+            int respuesta = frmCierreCajaLocal.mostrarMensajeConfirmacion("¿Seguro que desea guardar el cierre de caja actual?");
+            if (respuesta!=0) {
+                return;
+            }
+            if (empleado==null) {
+                frmCierreCajaLocal.mostrarMensajeError("El usuario actual no puede realizar este cierre de caja, no se como terminaste aqui :/");
+                return;
+            }
+            CierreCajaLocal cierreCajaLocal = new CierreCajaLocal(lecturaMedidor, lecturaAnterior, garrafonesRuta, garrafonesVaciados, pagosTransferencia, garrafonesNuevos, dineroCaja, litrosVendidos, garrafonesVendidosRedondeado, dineroTotal, dineroFaltante, empleado);
             unitOfWork.cclRepository().agregar(cierreCajaLocal);
+            frmCierreCajaLocal.mostrarMensaje("¡Cierre de caja realizado con éxito!");
             frmCierreCajaLocal.setCalculable();
         }
     }      
