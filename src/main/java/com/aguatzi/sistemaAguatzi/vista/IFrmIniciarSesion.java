@@ -22,7 +22,7 @@ public interface IFrmIniciarSesion {
 
     public void eliminarVentana();
     
-    public void verificaCampos();
+    public void verificarCampos();
     
     public void limpiarCampos();
 

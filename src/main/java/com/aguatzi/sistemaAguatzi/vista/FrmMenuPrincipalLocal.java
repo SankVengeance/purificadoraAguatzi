@@ -171,8 +171,8 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
     }
 
     @Override
-    public void setUsuario() {
-      
+    public void setNombreUsuario(String nombreUsuario) {
+        txtNombreUsuario.setText(nombreUsuario);
     }
     
 }

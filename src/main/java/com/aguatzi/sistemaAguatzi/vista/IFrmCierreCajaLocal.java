@@ -25,22 +25,20 @@ public interface IFrmCierreCajaLocal {
     public String getGarrafonesNuevos();
 
     public String getDineroCaja();
-    
-    public void limpiarCampos();
-    
-    public void verificarCampos();
+        
+    public boolean verificarCampos();
 
     public void setLitrosVendidos(String litros);
 
-    public void setGarrafonesVnedidos(String Garrafonesvendidos);
+    public void setGarrafonesVendidos(String Garrafonesvendidos);
 
     public void setDineroTotal(String dineroTotal);
 
     public void setFaltante(String Faltante);
     
-    public void setUsuario(String usuario);
+    public void setNombreUsuario(String nombreUsuario);
 
-    public void agregarCalcularnListener(ActionListener actionListener);
+    public void agregarCalcularListener(ActionListener actionListener);
 
     public void agregarLimpiarListener(ActionListener actionListener);
 
@@ -56,4 +54,7 @@ public interface IFrmCierreCajaLocal {
 
     public void eliminarVentana();
 
+    public void setCalculable();
+    
+    public void setGuardable();
 }

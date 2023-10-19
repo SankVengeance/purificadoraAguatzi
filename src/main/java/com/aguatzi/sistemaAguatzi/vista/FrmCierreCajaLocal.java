@@ -347,7 +347,7 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
     }
     
     @Override
-    public void setGarrafonesVnedidos(String garraafonesVendidos) {
+    public void setGarrafonesVendidos(String garraafonesVendidos) {
         txtGarrafonesVendidos.setText(garraafonesVendidos);
     }
     
@@ -367,7 +367,7 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
     }
     
     @Override
-    public void agregarCalcularnListener(ActionListener actionListener) {
+    public void agregarCalcularListener(ActionListener actionListener) {
         btnCalcular.addActionListener(actionListener);
     }
     
@@ -401,8 +401,8 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
         this.dispose();
     }
 
-    @Override
-    public void limpiarCampos() {
+    
+    private void limpiarCampos() {
         txtLecturaMedidor.setText("");
         txtLecturaAnterior.setText("");
         txtGarrafonesRuta.setText("");
@@ -417,13 +417,25 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
     }
 
     @Override
-    public void verificarCampos() {
-        
+    public boolean verificarCampos() {
+        return true;
     }
 
     @Override
     public int mostrarMensajeConfirmacion(String mensaje) {
-     return JOptionPane.showConfirmDialog(this, mensaje, "¿Seguro que desea guardar?", JOptionPane.YES_NO_OPTION);
+        return JOptionPane.showConfirmDialog(this, mensaje, "¿Seguro que desea guardar?", JOptionPane.YES_NO_OPTION);
+    }
+
+    @Override
+    public void setGuardable(){
+        this.btnCalcular.setEnabled(false);
+        this.btnGuardar.setEnabled(true);
+    }
     
+    @Override
+    public void setCalculable(){
+        this.btnCalcular.setEnabled(true);
+        this.btnGuardar.setEnabled(false);
+        this.limpiarCampos();
     }
 }

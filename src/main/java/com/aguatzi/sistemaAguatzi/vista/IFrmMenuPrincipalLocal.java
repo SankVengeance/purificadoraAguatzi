@@ -16,8 +16,8 @@ public interface IFrmMenuPrincipalLocal {
 
     public void agregarMiHorarioListener(ActionListener actionListener);
     
-     public void agregarCerrarSesionListener(ActionListener actionListener);
+    public void agregarCerrarSesionListener(ActionListener actionListener);
      
-     public void setUsuario();
+    public void setNombreUsuario(String nombreUsuario);
 
 }
