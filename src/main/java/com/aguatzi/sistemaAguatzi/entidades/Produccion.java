@@ -17,13 +17,13 @@ public class Produccion implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idProduccion", nullable = false)
-    private int idProduccion;
+    private Long idProduccion;
 
     @Column(name = "fecha", nullable = false)
     private Date fecha;
 
     @Column(name = "cantidad", nullable = false)
-    private int cantidad;
+    private float cantidad;
 
     @ManyToOne
     @JoinColumn(name = "idCierreCajaLocal", nullable = false)
@@ -32,7 +32,7 @@ public class Produccion implements Serializable {
     public Produccion() {
     }
 
-    public Produccion(int idProduccion) {
+    public Produccion(Long idProduccion) {
         this.idProduccion = idProduccion;
     }
 
@@ -42,11 +42,11 @@ public class Produccion implements Serializable {
         this.cierreCajaLocal = cierreCajaLocal;
     }
 
-    public int getIdProduccion() {
+    public Long getIdProduccion() {
         return idProduccion;
     }
 
-    public void setIdProduccion(int idProduccion) {
+    public void setIdProduccion(Long idProduccion) {
         this.idProduccion = idProduccion;
     }
 
@@ -58,7 +58,7 @@ public class Produccion implements Serializable {
         this.fecha = fecha;
     }
 
-    public int getCantidad() {
+    public float getCantidad() {
         return cantidad;
     }
 

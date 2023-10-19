@@ -14,7 +14,7 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) // Generación automática de la clave primaria
     @Column(name = "idUsuario", nullable = false)
-    private int idUsuario;
+    private Long idUsuario;
 
     @Column(name = "nombreUsuario", length = 45, nullable = false)
     private String nombreUsuario;
@@ -29,7 +29,7 @@ public class Usuario implements Serializable {
     }
 
 
-    public Usuario(int idUsuario) {
+    public Usuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -39,11 +39,11 @@ public class Usuario implements Serializable {
         this.tipoUsuario = tipoUsuario;
     }
 
-    public int getIdUsuario() {
+    public Long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Long idUsuario) {
         this.idUsuario = idUsuario;
     }
 
