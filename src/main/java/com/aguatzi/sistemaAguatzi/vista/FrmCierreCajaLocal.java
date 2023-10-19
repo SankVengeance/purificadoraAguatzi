@@ -433,4 +433,9 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
         this.btnGuardar.setEnabled(false);
         this.limpiarCampos();
     }
+
+    @Override
+    public void setNombreUsuario(String nombreUsuario) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
