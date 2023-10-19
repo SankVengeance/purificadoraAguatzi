@@ -17,7 +17,7 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
      * Creates new form FrmCierreCajaLocal
      */
     public FrmCierreCajaLocal() {
-        setCalculable();
+      
         initComponents();
     }
 
