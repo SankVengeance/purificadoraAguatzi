@@ -17,7 +17,7 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
      * Creates new form FrmCierreCajaLocal
      */
     public FrmCierreCajaLocal() {
-      
+
         initComponents();
     }
 
@@ -421,12 +421,13 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
 
     @Override
     public boolean verificarCampos() {
-        if (contieneSoloNumeros(txtLecturaMedidor.getText()) == false || contieneSoloNumeros(txtLecturaAnterior.getName()) == false || contieneSoloNumeros(txtGarrafonesRuta.getText()) == false || contieneSoloNumeros(txtGarrafonesVaciados.getText()) == false || contieneSoloNumeros(txtPagadosTrasferencia.getText()) == false || contieneSoloNumeros(txtGarrafonesNuevos.getText()) == false || contieneSoloNumeros(txtDineroCaja.getText()) == false) {
-            return false;
-        }
         if (CampoVacio(txtLecturaMedidor.getText()) == true || CampoVacio(txtLecturaAnterior.getText()) == true || CampoVacio(txtGarrafonesRuta.getText()) == true || CampoVacio(txtGarrafonesVaciados.getText()) == true || CampoVacio(txtPagadosTrasferencia.getText()) == true || CampoVacio(txtGarrafonesNuevos.getText()) == true || CampoVacio(txtDineroCaja.getText()) == true) {
             return false;
         }
+        if (contieneSoloNumeros(txtLecturaMedidor.getText()) == false || contieneSoloNumeros(txtLecturaAnterior.getText()) == false || contieneSoloNumeros(txtGarrafonesRuta.getText()) == false || contieneSoloNumeros(txtGarrafonesVaciados.getText()) == false || contieneSoloNumeros(txtPagadosTrasferencia.getText()) == false || contieneSoloNumeros(txtGarrafonesNuevos.getText()) == false || contieneSoloNumeros(txtDineroCaja.getText()) == false) {
+            return false;
+        }
+
         return true;
     }
 
