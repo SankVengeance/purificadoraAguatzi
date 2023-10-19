@@ -18,8 +18,8 @@ import javax.swing.JOptionPane;
  */
 public class ControladorIniciarSesion {
     
-    IFrmIniciarSesion frmIniciarSesion;
-    UnitOfWork unitOfWork;
+    private IFrmIniciarSesion frmIniciarSesion;
+    private UnitOfWork unitOfWork;
     
 
     public ControladorIniciarSesion(IFrmIniciarSesion frmIniciarSesion) {
@@ -42,6 +42,7 @@ public class ControladorIniciarSesion {
                 switch (tipoUsuario) {
                     case "local":
                         FrmMenuPrincipalLocal frmMenuPrincipalLocal = new FrmMenuPrincipalLocal();
+                        ControladorMenuPrincipalLocal controladorMenuPrincipalLocal = new ControladorMenuPrincipalLocal(frmMenuPrincipalLocal, usuario);
                         frmMenuPrincipalLocal.setVisible(true);
                         break;
                     case "repartidor":
