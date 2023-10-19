@@ -20,7 +20,7 @@ public class Gasto implements Serializable {
     private Long idGasto;
 
     @Column(name = "monto", nullable = false)
-    private int monto;
+    private float monto;
 
     @Column(name = "fecha", nullable = false)
     private Date fecha;
@@ -42,7 +42,7 @@ public class Gasto implements Serializable {
         this.cierreCajaRepartidor = cierreCajaRepartidor;
     }
 
-    public int getMonto() {
+    public float getMonto() {
         return monto;
     }
 
