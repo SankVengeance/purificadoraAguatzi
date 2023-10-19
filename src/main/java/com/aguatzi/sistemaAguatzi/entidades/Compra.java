@@ -38,12 +38,14 @@ public class Compra implements Serializable {
         this.idCompra = idCompra;
     }
 
-    public Compra(String tipoInsumo, int cantidad, int monto, Usuario usuario) {
+    public Compra(String tipoInsumo, int cantidad, float monto, Usuario usuario) {
         this.tipoInsumo = tipoInsumo;
         this.cantidad = cantidad;
         this.monto = monto;
         this.usuario = usuario;
     }
+
+ 
 
     public Long getIdCompra() {
         return idCompra;
