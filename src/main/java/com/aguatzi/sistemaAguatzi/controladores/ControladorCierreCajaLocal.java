@@ -32,6 +32,7 @@ public class ControladorCierreCajaLocal {
         this.frmCierreCajaLocal.agregarLimpiarListener(new LimpiarListener());
         this.frmCierreCajaLocal.agregarGuardarListener(new GuardarListener());
         this.frmCierreCajaLocal.agregarCancelarListener(new CancelarListener());
+        this.frmCierreCajaLocal.setCalculable();
         unitOfWork = new UnitOfWork();
     }
         
@@ -107,6 +108,7 @@ public class ControladorCierreCajaLocal {
                 case "local":
                     FrmMenuPrincipalLocal frmMenuPrincipalLocal = new FrmMenuPrincipalLocal();
                     ControladorMenuPrincipalLocal controladorMenuPrincipalLocal = new ControladorMenuPrincipalLocal(frmMenuPrincipalLocal, usuario);
+                    frmMenuPrincipalLocal.setVisible(true);
                     break;
                 default:
                     throw new AssertionError();

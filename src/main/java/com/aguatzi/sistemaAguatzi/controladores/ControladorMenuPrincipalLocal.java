@@ -17,7 +17,6 @@ import java.awt.event.ActionListener;
  */
 public class ControladorMenuPrincipalLocal {
     private IFrmMenuPrincipalLocal frmMenuPrincipalLocal;
-    private UnitOfWork unitOfWork;
     private Usuario usuario;
     
 
@@ -33,6 +32,7 @@ public class ControladorMenuPrincipalLocal {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            frmMenuPrincipalLocal.eliminarVentana();
             FrmCierreCajaLocal frmCierreCajaLocal = new FrmCierreCajaLocal();
             frmCierreCajaLocal.setVisible(true);
             ControladorCierreCajaLocal controladorCierreCajaLocal = new ControladorCierreCajaLocal(frmCierreCajaLocal, usuario);
@@ -43,6 +43,7 @@ public class ControladorMenuPrincipalLocal {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            frmMenuPrincipalLocal.eliminarVentana();
             FrmIniciarSesion frmIniciarSesion = new FrmIniciarSesion();
             frmIniciarSesion.setVisible(true);
             ControladorIniciarSesion controladorIniciarSesion = new ControladorIniciarSesion(frmIniciarSesion);
