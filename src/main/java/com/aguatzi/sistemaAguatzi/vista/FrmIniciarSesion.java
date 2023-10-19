@@ -1,6 +1,7 @@
 package com.aguatzi.sistemaAguatzi.vista;
 
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 
 /**
@@ -42,7 +43,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
         Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(58, 138, 236));
 
         lblBienvenido.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 36)); // NOI18N
         lblBienvenido.setForeground(new java.awt.Color(255, 255, 255));
@@ -94,7 +95,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
         lblCorreo1.setText("Usuario");
         Background.add(lblCorreo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 180, 20));
 
-        btnIniciarSesion.setBackground(new java.awt.Color(0, 102, 204));
+        btnIniciarSesion.setBackground(new java.awt.Color(58, 138, 236));
         btnIniciarSesion.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 12)); // NOI18N
         btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciarSesion.setText("Iniciar Sesión");
@@ -162,6 +163,32 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
     @Override
     public void agregarIniciarSesionListener(ActionListener actionListener) {
         btnIniciarSesion.addActionListener(actionListener);
+    }
+
+    @Override
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Aviso", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    @Override
+    public void mostrarMensajeError(String mensajeError) {
+        JOptionPane.showMessageDialog(this, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    @Override
+    public void eliminarVentana() {
+        this.dispose();
+    }
+
+    @Override
+    public void verificarCampos() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void limpiarCampos() {
+      txtUsuario.setText("");
+      txtContrasenia.setText("");
     }
 
   
