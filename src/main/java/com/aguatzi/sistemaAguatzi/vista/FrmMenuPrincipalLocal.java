@@ -23,7 +23,7 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
         background3 = new javax.swing.JPanel();
         head3 = new javax.swing.JPanel();
         txtBienvenida = new javax.swing.JLabel();
-        lblNombreUsuario = new javax.swing.JLabel();
+        txtNombreUsuario = new javax.swing.JLabel();
         btnMiHorario = new javax.swing.JButton();
         btnCerrarSesion = new javax.swing.JButton();
         btnCierreCaja = new javax.swing.JButton();
@@ -44,9 +44,9 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
         txtBienvenida.setForeground(new java.awt.Color(255, 255, 255));
         txtBienvenida.setText("Bienvenido:");
 
-        lblNombreUsuario.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 24)); // NOI18N
-        lblNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreUsuario.setText("nombreUsuario");
+        txtNombreUsuario.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 24)); // NOI18N
+        txtNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombreUsuario.setText("nombreUsuario");
 
         javax.swing.GroupLayout head3Layout = new javax.swing.GroupLayout(head3);
         head3.setLayout(head3Layout);
@@ -56,7 +56,7 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
                 .addGap(25, 25, 25)
                 .addComponent(txtBienvenida)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblNombreUsuario)
+                .addComponent(txtNombreUsuario)
                 .addContainerGap(359, Short.MAX_VALUE))
         );
         head3Layout.setVerticalGroup(
@@ -65,7 +65,7 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
                 .addGap(24, 24, 24)
                 .addGroup(head3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtBienvenida)
-                    .addComponent(lblNombreUsuario))
+                    .addComponent(txtNombreUsuario))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
@@ -151,8 +151,8 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
     private javax.swing.JButton btnCierreCaja;
     private javax.swing.JButton btnMiHorario;
     private javax.swing.JPanel head3;
-    private javax.swing.JLabel lblNombreUsuario;
     private javax.swing.JLabel txtBienvenida;
+    private javax.swing.JLabel txtNombreUsuario;
     // End of variables declaration//GEN-END:variables
 
     @Override
@@ -168,6 +168,11 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
     @Override
     public void agregarCerrarSesionListener(ActionListener actionListener) {
         btnCerrarSesion.addActionListener(actionListener);
+    }
+
+    @Override
+    public void setUsuario() {
+      
     }
     
 }

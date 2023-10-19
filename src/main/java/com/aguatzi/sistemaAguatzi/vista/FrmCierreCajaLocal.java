@@ -342,28 +342,28 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
     }
     
     @Override
-    public void setListrosVendidos() {
-        
+    public void setLitrosVendidos(String litros) {
+        txtLitrosVendidos.setText(litros);
     }
     
     @Override
-    public void setGarrafonesVnedidos() {
-        
+    public void setGarrafonesVnedidos(String garraafonesVendidos) {
+        txtGarrafonesVendidos.setText(garraafonesVendidos);
     }
     
     @Override
-    public void setDineroTotal() {
-        
+    public void setDineroTotal(String dineroTotal) {
+        txtDineroTotal.setText(dineroTotal);
     }
     
     @Override
-    public void setFaltante() {
-        
+    public void setFaltante(String faltante) {
+        txtFaltante.setText(faltante);
     }
     
     @Override
-    public void setUsuario() {
-        
+    public void setUsuario(String usuario) {
+        txtUsuario.setText(usuario);
     }
     
     @Override
@@ -399,5 +399,31 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
     @Override
     public void eliminarVentana() {
         this.dispose();
+    }
+
+    @Override
+    public void limpiarCampos() {
+        txtLecturaMedidor.setText("");
+        txtLecturaAnterior.setText("");
+        txtGarrafonesRuta.setText("");
+        txtGarrafonesVaciados.setText("");
+        txtPagadosTrasferencia.setText("");
+        txtGarrafonesNuevos.setText("");
+        txtDineroCaja.setText("");
+        txtLitrosVendidos.setText("");
+        txtGarrafonesVendidos.setText("");
+        txtDineroTotal.setText("");
+        txtFaltante.setText("");
+    }
+
+    @Override
+    public void verificarCampos() {
+
+    }
+
+    @Override
+    public int mostrarMensajeConfirmacion(String mensaje) {
+     return JOptionPane.showConfirmDialog(this, mensaje, "¿Seguro que desea guardar?", JOptionPane.YES_NO_OPTION);
+    
     }
 }

@@ -21,6 +21,10 @@ public interface IFrmIniciarSesion {
     public void mostrarMensajeError(String mensajeError);
 
     public void eliminarVentana();
+    
+    public void verificaCampos();
+    
+    public void limpiarCampos();
 
     public void agregarIniciarSesionListener(ActionListener actionListener);
 }
