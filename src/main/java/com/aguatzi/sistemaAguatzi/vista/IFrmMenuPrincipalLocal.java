@@ -15,7 +15,11 @@ public interface IFrmMenuPrincipalLocal {
     public void agregarCierreDeCajaLocalListener(ActionListener actionListener);
 
     public void agregarMiHorarioListener(ActionListener actionListener);
-    
-     public void agregarCerrarSesionListener(ActionListener actionListener);
+
+    public void agregarCerrarSesionListener(ActionListener actionListener);
+
+    public void setNombreUsuario(String nombreUsuario);
+
+    public void eliminarVentana();
 
 }

@@ -16,13 +16,13 @@ public class CierreCajaLocal implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idCierreCajaLocal", nullable = false)
-    private int idCierreCajaLocal;
+    private Long idCierreCajaLocal;
 
     @Column(name = "lecturaMedidor", nullable = false)
-    private int lecturaMedidor;
+    private float lecturaMedidor;
 
     @Column(name = "lecturaAnterior", nullable = false)
-    private int lecturaAnterior;
+    private float lecturaAnterior;
 
     @Column(name = "garrafonesRepartidor", nullable = false)
     private int garrafonesRepartidor;
@@ -37,19 +37,19 @@ public class CierreCajaLocal implements Serializable {
     private int garrafonesNuevosVendidos;
 
     @Column(name = "dineroCaja", nullable = false)
-    private int dineroCaja;
+    private float dineroCaja;
 
     @Column(name = "litrosVendidos", nullable = false)
-    private int litrosVendidos;
+    private float litrosVendidos;
 
     @Column(name = "garrafonesVendidos", nullable = false)
     private int garrafonesVendidos;
 
     @Column(name = "dineroTotal", nullable = false)
-    private int dineroTotal;
+    private float dineroTotal;
 
     @Column(name = "faltante", nullable = false)
-    private int faltante;
+    private float faltante;
 
     @ManyToOne
     @JoinColumn(name = "idEmpleado", nullable = false)
@@ -61,11 +61,11 @@ public class CierreCajaLocal implements Serializable {
     }
 
 
-    public CierreCajaLocal(int idCierreCajaLocal) {
+    public CierreCajaLocal(Long idCierreCajaLocal) {
         this.idCierreCajaLocal = idCierreCajaLocal;
     }
 
-    public CierreCajaLocal(int lecturaMedidor, int lecturaAnterior, int garrafonesRepartidor, int garrafonesVaciados, int pagadosTransferencia, int garrafonesNuevosVendidos, int dineroCaja, int litrosVendidos, int garrafonesVendidos, int dineroTotal, int faltante, Empleado empleado) {
+    public CierreCajaLocal(float lecturaMedidor, float lecturaAnterior, int garrafonesRepartidor, int garrafonesVaciados, int pagadosTransferencia, int garrafonesNuevosVendidos, float dineroCaja, float litrosVendidos, int garrafonesVendidos, float dineroTotal, float faltante, Empleado empleado) {
         this.lecturaMedidor = lecturaMedidor;
         this.lecturaAnterior = lecturaAnterior;
         this.garrafonesRepartidor = garrafonesRepartidor;
@@ -80,15 +80,17 @@ public class CierreCajaLocal implements Serializable {
         this.empleado = empleado;
     }
 
-    public int getIdCierreCajaLocal() {
+   
+
+    public Long getIdCierreCajaLocal() {
         return idCierreCajaLocal;
     }
 
-    public void setIdCierreCajaLocal(int idCierreCajaLocal) {
+    public void setIdCierreCajaLocal(Long idCierreCajaLocal) {
         this.idCierreCajaLocal = idCierreCajaLocal;
     }
 
-    public int getLecturaMedidor() {
+    public float getLecturaMedidor() {
         return lecturaMedidor;
     }
 
@@ -96,7 +98,7 @@ public class CierreCajaLocal implements Serializable {
         this.lecturaMedidor = lecturaMedidor;
     }
 
-    public int getLecturaAnterior() {
+    public float getLecturaAnterior() {
         return lecturaAnterior;
     }
 
@@ -136,7 +138,7 @@ public class CierreCajaLocal implements Serializable {
         this.garrafonesNuevosVendidos = garrafonesNuevosVendidos;
     }
 
-    public int getDineroCaja() {
+    public float getDineroCaja() {
         return dineroCaja;
     }
 
@@ -144,7 +146,7 @@ public class CierreCajaLocal implements Serializable {
         this.dineroCaja = dineroCaja;
     }
 
-    public int getLitrosVendidos() {
+    public float getLitrosVendidos() {
         return litrosVendidos;
     }
 
@@ -160,7 +162,7 @@ public class CierreCajaLocal implements Serializable {
         this.garrafonesVendidos = garrafonesVendidos;
     }
 
-    public int getDineroTotal() {
+    public float getDineroTotal() {
         return dineroTotal;
     }
 
@@ -168,7 +170,7 @@ public class CierreCajaLocal implements Serializable {
         this.dineroTotal = dineroTotal;
     }
 
-    public int getFaltante() {
+    public float getFaltante() {
         return faltante;
     }
 

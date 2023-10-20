@@ -21,7 +21,7 @@ public class UsuariosRepository extends RepositoryBase<Usuario>{
     public Usuario obtenPorUsername(String nombreUsuario){
         TypedQuery<Usuario> query = entityManager.createNamedQuery("Usuario.findByUsername", Usuario.class);
         query.setParameter("nombreUsuario", nombreUsuario);
-        Usuario usuario = query.getSingleResult();
+        Usuario usuario = query.getResultList().stream().findFirst().orElse(null);
         return usuario;
     }
     

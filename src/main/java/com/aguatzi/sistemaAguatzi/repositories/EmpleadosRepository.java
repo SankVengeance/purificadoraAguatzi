@@ -5,7 +5,9 @@
 package com.aguatzi.sistemaAguatzi.repositories;
 
 import com.aguatzi.sistemaAguatzi.entidades.Empleado;
+import com.aguatzi.sistemaAguatzi.entidades.Usuario;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -17,4 +19,10 @@ public class EmpleadosRepository extends RepositoryBase<Empleado>{
         super(entityManager);
     }
     
+    public Empleado obtenerPorUsuario(Usuario usuario) {
+        TypedQuery<Empleado> query = entityManager.createNamedQuery("Empleado.findByUsuario", Empleado.class);
+        query.setParameter("usuario", usuario);
+        Empleado empleado = query.getResultList().stream().findFirst().orElse(null);
+        return empleado;
+    }
 }

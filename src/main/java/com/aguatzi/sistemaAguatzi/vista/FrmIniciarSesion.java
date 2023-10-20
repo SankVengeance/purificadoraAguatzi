@@ -3,17 +3,14 @@ package com.aguatzi.sistemaAguatzi.vista;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
-
 /**
  *
  * @author Omar Guerrero
  */
 public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarSesion {
 
-
-
     public FrmIniciarSesion() {
-       initComponents();
+        initComponents();
     }
 
     @SuppressWarnings("unchecked")
@@ -43,7 +40,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
         Background.setBackground(new java.awt.Color(255, 255, 255));
         Background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 255));
+        jPanel1.setBackground(new java.awt.Color(58, 138, 236));
 
         lblBienvenido.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 36)); // NOI18N
         lblBienvenido.setForeground(new java.awt.Color(255, 255, 255));
@@ -95,7 +92,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
         lblCorreo1.setText("Usuario");
         Background.add(lblCorreo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 180, 20));
 
-        btnIniciarSesion.setBackground(new java.awt.Color(0, 102, 204));
+        btnIniciarSesion.setBackground(new java.awt.Color(58, 138, 236));
         btnIniciarSesion.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 12)); // NOI18N
         btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciarSesion.setText("Iniciar Sesión");
@@ -129,7 +126,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
     }//GEN-LAST:event_txtUsuarioActionPerformed
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-      
+
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
 
@@ -155,7 +152,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
 
     @Override
     public String getContrasenia() {
-         String intentoPassword = new String(this.txtContrasenia.getPassword());
+        String intentoPassword = new String(this.txtContrasenia.getPassword());
         return intentoPassword;
 
     }
@@ -180,5 +177,22 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
         this.dispose();
     }
 
-  
+    @Override
+    public boolean verificarCampos() {
+        if (CampoVacio(txtUsuario.getText()) == true || CampoVacio(txtContrasenia.getToolTipText()) == true) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void limpiarCampos() {
+        txtUsuario.setText("");
+        txtContrasenia.setText("");
+    }
+
+    private boolean CampoVacio(String campo) {
+        return campo.isEmpty();
+    }
+
 }

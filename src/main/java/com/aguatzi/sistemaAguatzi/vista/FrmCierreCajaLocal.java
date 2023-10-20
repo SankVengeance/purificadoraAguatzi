@@ -4,16 +4,20 @@
  */
 package com.aguatzi.sistemaAguatzi.vista;
 
+import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Omar Guerrero
  */
-public class FrmCierreCajaLocal extends javax.swing.JFrame {
+public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierreCajaLocal {
 
     /**
      * Creates new form FrmCierreCajaLocal
      */
     public FrmCierreCajaLocal() {
+
         initComponents();
     }
 
@@ -39,142 +43,246 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame {
         lblDineroCaja = new javax.swing.JLabel();
         lblFaltante = new javax.swing.JLabel();
         txtLecturaMedidor = new javax.swing.JTextField();
-        txtLecturaMedidor1 = new javax.swing.JTextField();
-        txtLecturaMedidor2 = new javax.swing.JTextField();
-        txtLecturaMedidor3 = new javax.swing.JTextField();
-        txtLecturaMedidor4 = new javax.swing.JTextField();
-        txtLecturaMedidor5 = new javax.swing.JTextField();
-        txtLecturaMedidor6 = new javax.swing.JTextField();
-        txtLecturaMedidor7 = new javax.swing.JTextField();
-        txtLecturaMedidor8 = new javax.swing.JTextField();
-        txtLecturaMedidor9 = new javax.swing.JTextField();
-        txtLecturaMedidor10 = new javax.swing.JTextField();
+        txtGarrafonesRuta = new javax.swing.JTextField();
+        txtLecturaAnterior = new javax.swing.JTextField();
+        txtPagadosTrasferencia = new javax.swing.JTextField();
+        txtGarrafonesVaciados = new javax.swing.JTextField();
+        txtGarrafonesNuevos = new javax.swing.JTextField();
+        txtLitrosVendidos = new javax.swing.JTextField();
+        txtDineroCaja = new javax.swing.JTextField();
+        txtGarrafonesVendidos = new javax.swing.JTextField();
+        txtFaltante = new javax.swing.JTextField();
+        txtDineroTotal = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        lblBienvenido = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JLabel();
+        btnCalcular = new javax.swing.JButton();
+        btnLimpiar = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(58, 138, 236));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblLecturaMedidor.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblLecturaMedidor.setForeground(new java.awt.Color(255, 255, 255));
+        lblLecturaMedidor.setBackground(new java.awt.Color(102, 102, 102));
+        lblLecturaMedidor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblLecturaMedidor.setForeground(new java.awt.Color(102, 102, 102));
         lblLecturaMedidor.setText("Lectura Medidor");
-        jPanel1.add(lblLecturaMedidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 40, -1, -1));
+        jPanel1.add(lblLecturaMedidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setBackground(new java.awt.Color(102, 102, 102));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
         jLabel2.setText("Lectura Anterior");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 80, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, -1, -1));
 
-        lblGarrafonesRuta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblGarrafonesRuta.setForeground(new java.awt.Color(255, 255, 255));
+        lblGarrafonesRuta.setBackground(new java.awt.Color(102, 102, 102));
+        lblGarrafonesRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblGarrafonesRuta.setForeground(new java.awt.Color(102, 102, 102));
         lblGarrafonesRuta.setText("Garrafones Para Ruta");
-        jPanel1.add(lblGarrafonesRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 130, -1, -1));
+        jPanel1.add(lblGarrafonesRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, -1, -1));
 
-        lblGarrafonesNuevos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblGarrafonesNuevos.setForeground(new java.awt.Color(255, 255, 255));
+        lblGarrafonesNuevos.setBackground(new java.awt.Color(102, 102, 102));
+        lblGarrafonesNuevos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblGarrafonesNuevos.setForeground(new java.awt.Color(102, 102, 102));
         lblGarrafonesNuevos.setText("Garrafones Nuevos");
-        jPanel1.add(lblGarrafonesNuevos, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 240, -1, -1));
+        jPanel1.add(lblGarrafonesNuevos, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, -1, -1));
 
-        lblPagadosTranasferencia.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblPagadosTranasferencia.setForeground(new java.awt.Color(255, 255, 255));
+        lblPagadosTranasferencia.setBackground(new java.awt.Color(102, 102, 102));
+        lblPagadosTranasferencia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblPagadosTranasferencia.setForeground(new java.awt.Color(102, 102, 102));
         lblPagadosTranasferencia.setText("Pagados Por Trasferencia");
-        jPanel1.add(lblPagadosTranasferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
+        jPanel1.add(lblPagadosTranasferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, -1, -1));
 
-        lblGarrafonesVaciados.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblGarrafonesVaciados.setForeground(new java.awt.Color(255, 255, 255));
+        lblGarrafonesVaciados.setBackground(new java.awt.Color(102, 102, 102));
+        lblGarrafonesVaciados.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblGarrafonesVaciados.setForeground(new java.awt.Color(102, 102, 102));
         lblGarrafonesVaciados.setText("Garrafones Vaciados");
-        jPanel1.add(lblGarrafonesVaciados, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 170, -1, -1));
+        jPanel1.add(lblGarrafonesVaciados, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, -1, -1));
 
-        lblDineroVenta.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblDineroVenta.setForeground(new java.awt.Color(255, 255, 255));
+        lblDineroVenta.setBackground(new java.awt.Color(102, 102, 102));
+        lblDineroVenta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDineroVenta.setForeground(new java.awt.Color(102, 102, 102));
         lblDineroVenta.setText("Dinero Venta Total");
-        jPanel1.add(lblDineroVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 410, -1, -1));
+        jPanel1.add(lblDineroVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 480, -1, -1));
 
-        lblGarrafonesVendidos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblGarrafonesVendidos.setForeground(new java.awt.Color(255, 255, 255));
+        lblGarrafonesVendidos.setBackground(new java.awt.Color(102, 102, 102));
+        lblGarrafonesVendidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblGarrafonesVendidos.setForeground(new java.awt.Color(102, 102, 102));
         lblGarrafonesVendidos.setText("Garrafones Vendidos");
-        jPanel1.add(lblGarrafonesVendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 360, -1, -1));
+        jPanel1.add(lblGarrafonesVendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, -1, -1));
 
-        lblLitrosVendidos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblLitrosVendidos.setForeground(new java.awt.Color(255, 255, 255));
+        lblLitrosVendidos.setBackground(new java.awt.Color(102, 102, 102));
+        lblLitrosVendidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblLitrosVendidos.setForeground(new java.awt.Color(102, 102, 102));
         lblLitrosVendidos.setText("Litros Vendidos");
-        jPanel1.add(lblLitrosVendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, -1, -1));
+        jPanel1.add(lblLitrosVendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, -1, -1));
 
-        lblDineroCaja.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblDineroCaja.setForeground(new java.awt.Color(255, 255, 255));
+        lblDineroCaja.setBackground(new java.awt.Color(102, 102, 102));
+        lblDineroCaja.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblDineroCaja.setForeground(new java.awt.Color(102, 102, 102));
         lblDineroCaja.setText("Dinero En Caja");
-        jPanel1.add(lblDineroCaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 280, -1, -1));
+        jPanel1.add(lblDineroCaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, -1, -1));
 
-        lblFaltante.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        lblFaltante.setForeground(new java.awt.Color(255, 255, 255));
+        lblFaltante.setBackground(new java.awt.Color(102, 102, 102));
+        lblFaltante.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFaltante.setForeground(new java.awt.Color(102, 102, 102));
         lblFaltante.setText("Faltante");
-        jPanel1.add(lblFaltante, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 450, -1, -1));
-        jPanel1.add(txtLecturaMedidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 40, 141, -1));
-        jPanel1.add(txtLecturaMedidor1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 120, 141, -1));
-        jPanel1.add(txtLecturaMedidor2, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 80, 141, -1));
-        jPanel1.add(txtLecturaMedidor3, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 200, 141, -1));
-        jPanel1.add(txtLecturaMedidor4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 160, 141, -1));
-        jPanel1.add(txtLecturaMedidor5, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 240, 141, -1));
-        jPanel1.add(txtLecturaMedidor6, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 320, 141, -1));
-        jPanel1.add(txtLecturaMedidor7, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 280, 141, -1));
-        jPanel1.add(txtLecturaMedidor8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 360, 141, -1));
-        jPanel1.add(txtLecturaMedidor9, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 440, 141, -1));
-        jPanel1.add(txtLecturaMedidor10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 400, 141, -1));
+        jPanel1.add(lblFaltante, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 520, -1, -1));
+        jPanel1.add(txtLecturaMedidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, 141, -1));
+        jPanel1.add(txtGarrafonesRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 141, -1));
+        jPanel1.add(txtLecturaAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 141, -1));
+        jPanel1.add(txtPagadosTrasferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 141, -1));
+        jPanel1.add(txtGarrafonesVaciados, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, 141, -1));
+        jPanel1.add(txtGarrafonesNuevos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, 141, -1));
+
+        txtLitrosVendidos.setFocusable(false);
+        jPanel1.add(txtLitrosVendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 141, -1));
+        jPanel1.add(txtDineroCaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, 141, -1));
+
+        txtGarrafonesVendidos.setFocusable(false);
+        jPanel1.add(txtGarrafonesVendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, 141, -1));
+
+        txtFaltante.setFocusable(false);
+        jPanel1.add(txtFaltante, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, 141, -1));
+
+        txtDineroTotal.setFocusable(false);
+        jPanel1.add(txtDineroTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, 141, -1));
+
+        jPanel2.setBackground(new java.awt.Color(58, 138, 236));
+
+        lblBienvenido.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 36)); // NOI18N
+        lblBienvenido.setForeground(new java.awt.Color(255, 255, 255));
+        lblBienvenido.setText("Cierre de caja");
+
+        txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        txtUsuario.setText("Usuario");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(80, 80, 80)
+                .addComponent(txtUsuario)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 444, Short.MAX_VALUE)
+                .addComponent(lblBienvenido)
+                .addGap(76, 76, 76))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(lblBienvenido)
+                .addGap(20, 20, 20))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addComponent(txtUsuario)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 90));
+
+        btnCalcular.setBackground(new java.awt.Color(58, 138, 236));
+        btnCalcular.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
+        btnCalcular.setForeground(new java.awt.Color(255, 255, 255));
+        btnCalcular.setText("Calcular");
+        btnCalcular.setBorder(null);
+        btnCalcular.setBorderPainted(false);
+        btnCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCalcularActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 170, 40));
+
+        btnLimpiar.setBackground(new java.awt.Color(58, 138, 236));
+        btnLimpiar.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
+        btnLimpiar.setForeground(new java.awt.Color(255, 255, 255));
+        btnLimpiar.setText("Limpiar");
+        btnLimpiar.setBorder(null);
+        btnLimpiar.setBorderPainted(false);
+        btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimpiarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 170, 40));
+
+        btnGuardar.setBackground(new java.awt.Color(58, 138, 236));
+        btnGuardar.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
+        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setText("Guardar");
+        btnGuardar.setBorder(null);
+        btnGuardar.setBorderPainted(false);
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 170, 40));
+
+        btnCancelar.setBackground(new java.awt.Color(58, 138, 236));
+        btnCancelar.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
+        btnCancelar.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelar.setText("Cancelar");
+        btnCancelar.setBorder(null);
+        btnCancelar.setBorderPainted(false);
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 110, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FrmCierreCajaLocal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FrmCierreCajaLocal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FrmCierreCajaLocal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FrmCierreCajaLocal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcularActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrmCierreCajaLocal().setVisible(true);
-            }
-        });
-    }
+    }//GEN-LAST:event_btnCalcularActionPerformed
+
+    private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
+
+    }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCalcular;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnLimpiar;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel lblBienvenido;
     private javax.swing.JLabel lblDineroCaja;
     private javax.swing.JLabel lblDineroVenta;
     private javax.swing.JLabel lblFaltante;
@@ -185,16 +293,164 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame {
     private javax.swing.JLabel lblLecturaMedidor;
     private javax.swing.JLabel lblLitrosVendidos;
     private javax.swing.JLabel lblPagadosTranasferencia;
+    private javax.swing.JTextField txtDineroCaja;
+    private javax.swing.JTextField txtDineroTotal;
+    private javax.swing.JTextField txtFaltante;
+    private javax.swing.JTextField txtGarrafonesNuevos;
+    private javax.swing.JTextField txtGarrafonesRuta;
+    private javax.swing.JTextField txtGarrafonesVaciados;
+    private javax.swing.JTextField txtGarrafonesVendidos;
+    private javax.swing.JTextField txtLecturaAnterior;
     private javax.swing.JTextField txtLecturaMedidor;
-    private javax.swing.JTextField txtLecturaMedidor1;
-    private javax.swing.JTextField txtLecturaMedidor10;
-    private javax.swing.JTextField txtLecturaMedidor2;
-    private javax.swing.JTextField txtLecturaMedidor3;
-    private javax.swing.JTextField txtLecturaMedidor4;
-    private javax.swing.JTextField txtLecturaMedidor5;
-    private javax.swing.JTextField txtLecturaMedidor6;
-    private javax.swing.JTextField txtLecturaMedidor7;
-    private javax.swing.JTextField txtLecturaMedidor8;
-    private javax.swing.JTextField txtLecturaMedidor9;
+    private javax.swing.JTextField txtLitrosVendidos;
+    private javax.swing.JTextField txtPagadosTrasferencia;
+    private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public String getLecturaMedidor() {
+        return txtLecturaMedidor.getText();
+    }
+
+    @Override
+    public String getLecturaAnterior() {
+        return txtLecturaAnterior.getText();
+    }
+
+    @Override
+    public String getGarrafonesRuta() {
+        return txtGarrafonesRuta.getText();
+    }
+
+    @Override
+    public String getGarrafonesVaciados() {
+        return txtGarrafonesVaciados.getText();
+    }
+
+    @Override
+    public String getPagadosTrasferencia() {
+        return txtPagadosTrasferencia.getText();
+    }
+
+    @Override
+    public String getGarrafonesNuevos() {
+        return txtGarrafonesNuevos.getText();
+    }
+
+    @Override
+    public String getDineroCaja() {
+        return txtDineroCaja.getText();
+    }
+
+    @Override
+    public void setLitrosVendidos(String litros) {
+        txtLitrosVendidos.setText(litros);
+    }
+
+    @Override
+    public void setGarrafonesVendidos(String garraafonesVendidos) {
+        txtGarrafonesVendidos.setText(garraafonesVendidos);
+    }
+
+    @Override
+    public void setDineroTotal(String dineroTotal) {
+        txtDineroTotal.setText(dineroTotal);
+    }
+
+    @Override
+    public void setFaltante(String faltante) {
+        txtFaltante.setText(faltante);
+    }
+
+    @Override
+    public void agregarCalcularListener(ActionListener actionListener) {
+        btnCalcular.addActionListener(actionListener);
+    }
+
+    @Override
+    public void agregarLimpiarListener(ActionListener actionListener) {
+        btnLimpiar.addActionListener(actionListener);
+    }
+
+    @Override
+    public void agregarGuardarListener(ActionListener actionListener) {
+        btnGuardar.addActionListener(actionListener);
+    }
+
+    @Override
+    public void agregarCancelarListener(ActionListener actionListener) {
+        btnCancelar.addActionListener(actionListener);
+    }
+
+    @Override
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje, "Aviso", JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    @Override
+    public void mostrarMensajeError(String mensajeError) {
+        JOptionPane.showMessageDialog(this, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    @Override
+    public void eliminarVentana() {
+        this.dispose();
+    }
+
+    private void limpiarCampos() {
+        txtLecturaMedidor.setText("");
+        txtLecturaAnterior.setText("");
+        txtGarrafonesRuta.setText("");
+        txtGarrafonesVaciados.setText("");
+        txtPagadosTrasferencia.setText("");
+        txtGarrafonesNuevos.setText("");
+        txtDineroCaja.setText("");
+        txtLitrosVendidos.setText("");
+        txtGarrafonesVendidos.setText("");
+        txtDineroTotal.setText("");
+        txtFaltante.setText("");
+    }
+
+    private boolean contieneSoloNumeros(String campo) {
+        return campo.matches("[0-9]+");
+    }
+
+    private boolean CampoVacio(String campo) {
+        return campo.isEmpty();
+    }
+
+    @Override
+    public boolean verificarCampos() {
+        if (CampoVacio(txtLecturaMedidor.getText()) == true || CampoVacio(txtLecturaAnterior.getText()) == true || CampoVacio(txtGarrafonesRuta.getText()) == true || CampoVacio(txtGarrafonesVaciados.getText()) == true || CampoVacio(txtPagadosTrasferencia.getText()) == true || CampoVacio(txtGarrafonesNuevos.getText()) == true || CampoVacio(txtDineroCaja.getText()) == true) {
+            return false;
+        }
+        if (contieneSoloNumeros(txtLecturaMedidor.getText()) == false || contieneSoloNumeros(txtLecturaAnterior.getText()) == false || contieneSoloNumeros(txtGarrafonesRuta.getText()) == false || contieneSoloNumeros(txtGarrafonesVaciados.getText()) == false || contieneSoloNumeros(txtPagadosTrasferencia.getText()) == false || contieneSoloNumeros(txtGarrafonesNuevos.getText()) == false || contieneSoloNumeros(txtDineroCaja.getText()) == false) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int mostrarMensajeConfirmacion(String mensaje) {
+        return JOptionPane.showConfirmDialog(this, mensaje, "¿Seguro que desea guardar?", JOptionPane.YES_NO_OPTION);
+    }
+
+    @Override
+    public void setGuardable() {
+        this.btnCalcular.setEnabled(false);
+        this.btnGuardar.setEnabled(true);
+    }
+
+    @Override
+    public void setCalculable() {
+        this.btnCalcular.setEnabled(true);
+        this.btnGuardar.setEnabled(false);
+        this.limpiarCampos();
+    }
+
+    @Override
+    public void setNombreUsuario(String nombreUsuario) {
+        txtUsuario.setText(nombreUsuario);
+    }
 }
