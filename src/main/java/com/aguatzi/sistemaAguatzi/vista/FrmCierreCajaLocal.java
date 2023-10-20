@@ -440,6 +440,13 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
     public void setGuardable() {
         this.btnCalcular.setEnabled(false);
         this.btnGuardar.setEnabled(true);
+        this.txtLecturaMedidor.setEnabled(false);
+        this.txtLecturaAnterior.setEnabled(false);
+        this.txtGarrafonesRuta.setEnabled(false);
+        this.txtGarrafonesVaciados.setEnabled(false);
+        this.txtPagadosTrasferencia.setEnabled(false);
+        this.txtGarrafonesNuevos.setEnabled(false);
+        this.txtDineroCaja.setEnabled(false);
     }
 
     @Override
@@ -447,6 +454,14 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
         this.btnCalcular.setEnabled(true);
         this.btnGuardar.setEnabled(false);
         this.limpiarCampos();
+        this.txtLecturaMedidor.setEnabled(true);
+        this.txtLecturaAnterior.setEnabled(true);
+        this.txtGarrafonesRuta.setEnabled(true);
+        this.txtGarrafonesVaciados.setEnabled(true);
+        this.txtPagadosTrasferencia.setEnabled(true);
+        this.txtGarrafonesNuevos.setEnabled(true);
+        this.txtDineroCaja.setEnabled(true);
+
     }
 
     @Override
