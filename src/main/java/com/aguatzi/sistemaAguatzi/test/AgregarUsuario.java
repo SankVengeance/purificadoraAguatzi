@@ -5,6 +5,7 @@
 package com.aguatzi.sistemaAguatzi.test;
 
 import com.aguatzi.sistemaAguatzi.controladores.UnitOfWork;
+import com.aguatzi.sistemaAguatzi.entidades.Empleado;
 import com.aguatzi.sistemaAguatzi.entidades.Usuario;
 import com.aguatzi.sistemaAguatzi.utils.Encriptador;
 import javax.crypto.AEADBadTagException;
@@ -21,8 +22,11 @@ public class AgregarUsuario {
     public static void main(String[] args) {
         UnitOfWork unitOfWork = new UnitOfWork();
         String contrasenia = Encriptador.encriptarPassword("local");
-        Usuario usuario = new Usuario("juanlocal", contrasenia, "local");
+        Usuario usuario = new Usuario("juanlocal2", contrasenia, "local");
         unitOfWork.usuariosRepository().agregar(usuario);
+        
+        Empleado empleado = new Empleado("Juanito", "Local", "Local", "Local", "Local", "Local", usuario);
+        unitOfWork.empleadosRepository().agregar(empleado);
     }
     
 }

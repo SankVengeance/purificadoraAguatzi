@@ -16,7 +16,7 @@ public class Compra implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "idCompra", nullable = false)
-    private int idCompra;
+    private Long idCompra;
 
     @Column(name = "tipoInsumo", length = 45, nullable = false)
     private String tipoInsumo;
@@ -25,7 +25,7 @@ public class Compra implements Serializable {
     private int cantidad;
 
     @Column(name = "monto", nullable = false)
-    private int monto;
+    private float monto;
 
     @ManyToOne
     @JoinColumn(name = "idUsuario")
@@ -34,22 +34,24 @@ public class Compra implements Serializable {
     public Compra() {
     }
 
-    public Compra(int idCompra) {
+    public Compra(Long idCompra) {
         this.idCompra = idCompra;
     }
 
-    public Compra(String tipoInsumo, int cantidad, int monto, Usuario usuario) {
+    public Compra(String tipoInsumo, int cantidad, float monto, Usuario usuario) {
         this.tipoInsumo = tipoInsumo;
         this.cantidad = cantidad;
         this.monto = monto;
         this.usuario = usuario;
     }
 
-    public int getIdCompra() {
+ 
+
+    public Long getIdCompra() {
         return idCompra;
     }
 
-    public void setIdCompra(int idCompra) {
+    public void setIdCompra(Long idCompra) {
         this.idCompra = idCompra;
     }
 
@@ -69,7 +71,7 @@ public class Compra implements Serializable {
         this.cantidad = cantidad;
     }
 
-    public int getMonto() {
+    public float getMonto() {
         return monto;
     }
 

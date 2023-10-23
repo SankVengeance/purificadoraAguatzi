@@ -31,19 +31,19 @@ public class CierreCajaRepartidor implements Serializable {
     private int pagadosTransferencia;
 
     @Column(name = "dineroReportado", nullable = false)
-    private int dineroReportado;
+    private float dineroReportado;
 
     @Column(name = "gastosExtra", nullable = false)
-    private int gastosExtra;
+    private float gastosExtra;
 
     @Column(name = "especificaciones",length = 150, nullable = false)
     private String especificaciones;
 
     @Column(name = "dineroVentaTotal", nullable = false)
-    private int dineroVentaTotal;
+    private float dineroVentaTotal;
 
     @Column(name = "dineroFaltante", nullable = false)
-    private int dineroFaltante;
+    private float dineroFaltante;
 
     @ManyToOne
     @JoinColumn(name = "idEmpleado", nullable = false)
@@ -52,7 +52,7 @@ public class CierreCajaRepartidor implements Serializable {
     public CierreCajaRepartidor() {
     }
 
-    public CierreCajaRepartidor(int garrafonesVendidos, int garrafonesFlados, int garrafonesDefectuosos, int pagadosTransferencia, int dineroReportado, int gastosExtra, String especificaciones, int dineroVentaTotal, int dineroFaltante, Empleado empleado) {
+    public CierreCajaRepartidor(int garrafonesVendidos, int garrafonesFlados, int garrafonesDefectuosos, int pagadosTransferencia, float dineroReportado, float gastosExtra, String especificaciones, float dineroVentaTotal, float dineroFaltante, Empleado empleado) {
         this.garrafonesVendidos = garrafonesVendidos;
         this.garrafonesFlados = garrafonesFlados;
         this.garrafonesDefectuosos = garrafonesDefectuosos;
@@ -64,6 +64,8 @@ public class CierreCajaRepartidor implements Serializable {
         this.dineroFaltante = dineroFaltante;
         this.empleado = empleado;
     }
+
+
 
     public int getGarrafonesVendidos() {
         return garrafonesVendidos;
@@ -97,7 +99,7 @@ public class CierreCajaRepartidor implements Serializable {
         this.pagadosTransferencia = pagadosTransferencia;
     }
 
-    public int getDineroReportado() {
+    public float getDineroReportado() {
         return dineroReportado;
     }
 
@@ -105,7 +107,7 @@ public class CierreCajaRepartidor implements Serializable {
         this.dineroReportado = dineroReportado;
     }
 
-    public int getGastosExtra() {
+    public float getGastosExtra() {
         return gastosExtra;
     }
 
@@ -121,7 +123,7 @@ public class CierreCajaRepartidor implements Serializable {
         this.especificaciones = especificaciones;
     }
 
-    public int getDineroVentaTotal() {
+    public float getDineroVentaTotal() {
         return dineroVentaTotal;
     }
 
@@ -129,7 +131,7 @@ public class CierreCajaRepartidor implements Serializable {
         this.dineroVentaTotal = dineroVentaTotal;
     }
 
-    public int getDineroFaltante() {
+    public float getDineroFaltante() {
         return dineroFaltante;
     }
 
