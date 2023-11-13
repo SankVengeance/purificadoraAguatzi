@@ -22,7 +22,7 @@ public class AgregarUsuario {
     public static void main(String[] args) {
         UnitOfWork unitOfWork = new UnitOfWork();
         String contrasenia = Encriptador.encriptarPassword("local");
-        Usuario usuario = new Usuario("juanlocal2", contrasenia, "local");
+        Usuario usuario = new Usuario("Juan", contrasenia, "local");
         unitOfWork.usuariosRepository().agregar(usuario);
         
         Empleado empleado = new Empleado("Juanito", "Local", "Local", "Local", "Local", "Local", usuario);
