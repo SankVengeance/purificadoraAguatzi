@@ -6,11 +6,13 @@ package com.aguatzi.sistemaAguatzi.vista;
 
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
+import javax.swing.border.Border;
 
 /**
  *
@@ -330,33 +332,37 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void txtLecturaMedidorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLecturaMedidorMouseClicked
-        txtLecturaMedidor.setBackground(Color.WHITE);
+        quitarBorde(txtLecturaMedidor);
     }//GEN-LAST:event_txtLecturaMedidorMouseClicked
 
     private void txtLecturaAnteriorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLecturaAnteriorMouseClicked
-        txtLecturaAnterior.setBackground(Color.WHITE);
+         quitarBorde(txtLecturaAnterior);
     }//GEN-LAST:event_txtLecturaAnteriorMouseClicked
 
     private void txtGarrafonesRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGarrafonesRutaMouseClicked
-        txtGarrafonesRuta.setBackground(Color.WHITE);
+        quitarBorde(txtGarrafonesRuta);
     }//GEN-LAST:event_txtGarrafonesRutaMouseClicked
 
     private void txtGarrafonesVaciadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGarrafonesVaciadosMouseClicked
-        txtGarrafonesVaciados.setBackground(Color.WHITE);
+        quitarBorde(txtGarrafonesVaciados);
     }//GEN-LAST:event_txtGarrafonesVaciadosMouseClicked
 
     private void txtPagadosTrasferenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPagadosTrasferenciaMouseClicked
-        txtPagadosTrasferencia.setBackground(Color.WHITE);
+        quitarBorde(txtPagadosTrasferencia);
     }//GEN-LAST:event_txtPagadosTrasferenciaMouseClicked
 
     private void txtGarrafonesNuevosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGarrafonesNuevosMouseClicked
-        txtGarrafonesNuevos.setBackground(Color.WHITE);
+        quitarBorde(txtGarrafonesNuevos);
     }//GEN-LAST:event_txtGarrafonesNuevosMouseClicked
 
     private void txtDineroCajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDineroCajaMouseClicked
-        txtDineroCaja.setBackground(Color.WHITE);
+        quitarBorde(txtDineroCaja);
     }//GEN-LAST:event_txtDineroCajaMouseClicked
-
+    
+    public void quitarBorde(JTextField field){
+         Border border = BorderFactory.createLineBorder(Color.black);
+         field.setBorder(border);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
@@ -526,16 +532,15 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
 
     private void cambiarColor(JTextField textField) {
         if (textField.getText().trim().isEmpty()) {
-            textField.setBackground(Color.RED);
+            Border border = BorderFactory.createLineBorder(Color.red, 2);
+            textField.setBorder(border);
         }
-    }
-
-    private void pintarDatos(JTextField textField) {
         if (!contieneSoloNumeros(textField.getText())) {
-            textField.setBackground(Color.RED);
+            Border border = BorderFactory.createLineBorder(Color.red, 2);
+            textField.setBorder(border);
         }
     }
-
+    
     @Override
     public boolean verificarCampos() {
         if (CampoVacio(txtLecturaMedidor.getText()) == true || CampoVacio(txtLecturaAnterior.getText()) == true || CampoVacio(txtGarrafonesRuta.getText()) == true || CampoVacio(txtGarrafonesVaciados.getText()) == true || CampoVacio(txtPagadosTrasferencia.getText()) == true || CampoVacio(txtGarrafonesNuevos.getText()) == true || CampoVacio(txtDineroCaja.getText()) == true) {
@@ -549,13 +554,15 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
             return false;
         }
         if (contieneSoloNumeros(txtLecturaMedidor.getText()) == false || contieneSoloNumeros(txtLecturaAnterior.getText()) == false || contieneSoloNumeros(txtGarrafonesRuta.getText()) == false || contieneSoloNumeros(txtGarrafonesVaciados.getText()) == false || contieneSoloNumeros(txtPagadosTrasferencia.getText()) == false || contieneSoloNumeros(txtGarrafonesNuevos.getText()) == false || contieneSoloNumeros(txtDineroCaja.getText()) == false) {
-            pintarDatos(txtLecturaMedidor);
-            pintarDatos(txtLecturaAnterior);
-            pintarDatos(txtGarrafonesRuta);
-            pintarDatos(txtGarrafonesVaciados);
-            pintarDatos(txtPagadosTrasferencia);
-            pintarDatos(txtGarrafonesNuevos);
-            pintarDatos(txtDineroCaja);
+            cambiarColor(txtLecturaMedidor);
+            
+            
+            cambiarColor(txtLecturaAnterior);
+            cambiarColor(txtGarrafonesRuta);
+            cambiarColor(txtGarrafonesVaciados);
+            cambiarColor(txtPagadosTrasferencia);
+            cambiarColor(txtGarrafonesNuevos);
+            cambiarColor(txtDineroCaja);
             return false;
 
         }
