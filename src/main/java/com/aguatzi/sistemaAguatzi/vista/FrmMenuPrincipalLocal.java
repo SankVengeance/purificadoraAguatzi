@@ -29,7 +29,7 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
         btnCierreCaja = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("BancoTransacciones");
+        setTitle("Sistema Purificadora Aguatzi");
         setResizable(false);
 
         background3.setBackground(new java.awt.Color(255, 255, 255));

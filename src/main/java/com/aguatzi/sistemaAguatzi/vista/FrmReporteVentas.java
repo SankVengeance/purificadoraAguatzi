@@ -18,16 +18,52 @@ import javax.swing.border.Border;
  *
  * @author Omar Guerrero
  */
-public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierreCajaLocal {
+public class FrmReporteVentas extends javax.swing.JFrame implements IFrmCierreCajaLocal {
 
     /**
      * Creates new form FrmCierreCajaLocal
      */
     UIManager UI;
 
-    public FrmCierreCajaLocal() {
+    public FrmReporteVentas() {
 
         initComponents();
+        setTitle("Reporte de ventas");
+    }
+    
+       /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new FrmReporteVentas().setVisible(true);
+            }
+        });
     }
 
     /**
@@ -40,36 +76,36 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblLecturaMedidor = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        lblGarrafonesRuta = new javax.swing.JLabel();
         lblGarrafonesNuevos = new javax.swing.JLabel();
         lblPagadosTranasferencia = new javax.swing.JLabel();
         lblGarrafonesVaciados = new javax.swing.JLabel();
         lblDineroVenta = new javax.swing.JLabel();
         lblGarrafonesVendidos = new javax.swing.JLabel();
         lblLitrosVendidos = new javax.swing.JLabel();
-        lblDineroCaja = new javax.swing.JLabel();
-        lblFaltante = new javax.swing.JLabel();
-        txtLecturaMedidor = new javax.swing.JTextField();
-        txtGarrafonesRuta = new javax.swing.JTextField();
-        txtLecturaAnterior = new javax.swing.JTextField();
         txtPagadosTrasferencia = new javax.swing.JTextField();
         txtGarrafonesVaciados = new javax.swing.JTextField();
         txtGarrafonesNuevos = new javax.swing.JTextField();
-        txtLitrosVendidos = new javax.swing.JTextField();
-        txtDineroCaja = new javax.swing.JTextField();
-        txtGarrafonesVendidos = new javax.swing.JTextField();
-        txtFaltante = new javax.swing.JTextField();
-        txtDineroTotal = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         lblBienvenido = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnCalcular = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
-        btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        txtGarrafonesVaciados1 = new javax.swing.JTextField();
+        txtGarrafonesVaciados2 = new javax.swing.JTextField();
+        txtGarrafonesVaciados3 = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Cierre de caja");
@@ -77,138 +113,68 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lblLecturaMedidor.setBackground(new java.awt.Color(102, 102, 102));
-        lblLecturaMedidor.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblLecturaMedidor.setForeground(new java.awt.Color(102, 102, 102));
-        lblLecturaMedidor.setText("Lectura Medidor");
-        jPanel1.add(lblLecturaMedidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 110, -1, -1));
-
-        jLabel2.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel2.setText("Lectura Anterior");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 150, -1, -1));
-
-        lblGarrafonesRuta.setBackground(new java.awt.Color(102, 102, 102));
-        lblGarrafonesRuta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblGarrafonesRuta.setForeground(new java.awt.Color(102, 102, 102));
-        lblGarrafonesRuta.setText("Garrafones Para Ruta");
-        jPanel1.add(lblGarrafonesRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 200, -1, -1));
-
         lblGarrafonesNuevos.setBackground(new java.awt.Color(102, 102, 102));
         lblGarrafonesNuevos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblGarrafonesNuevos.setForeground(new java.awt.Color(102, 102, 102));
         lblGarrafonesNuevos.setText("Garrafones Nuevos");
-        jPanel1.add(lblGarrafonesNuevos, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 310, -1, -1));
+        jPanel1.add(lblGarrafonesNuevos, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 290, -1, -1));
 
         lblPagadosTranasferencia.setBackground(new java.awt.Color(102, 102, 102));
         lblPagadosTranasferencia.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblPagadosTranasferencia.setForeground(new java.awt.Color(102, 102, 102));
         lblPagadosTranasferencia.setText("Pagados Por Trasferencia");
-        jPanel1.add(lblPagadosTranasferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 280, -1, -1));
+        jPanel1.add(lblPagadosTranasferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 260, -1, -1));
 
         lblGarrafonesVaciados.setBackground(new java.awt.Color(102, 102, 102));
         lblGarrafonesVaciados.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblGarrafonesVaciados.setForeground(new java.awt.Color(102, 102, 102));
         lblGarrafonesVaciados.setText("Garrafones Vaciados");
-        jPanel1.add(lblGarrafonesVaciados, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 240, -1, -1));
+        jPanel1.add(lblGarrafonesVaciados, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 320, -1, -1));
 
         lblDineroVenta.setBackground(new java.awt.Color(102, 102, 102));
         lblDineroVenta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDineroVenta.setForeground(new java.awt.Color(102, 102, 102));
         lblDineroVenta.setText("Dinero Venta Total");
-        jPanel1.add(lblDineroVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 470, -1, -1));
+        jPanel1.add(lblDineroVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 390, -1, -1));
 
         lblGarrafonesVendidos.setBackground(new java.awt.Color(102, 102, 102));
         lblGarrafonesVendidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblGarrafonesVendidos.setForeground(new java.awt.Color(102, 102, 102));
         lblGarrafonesVendidos.setText("Garrafones Vendidos");
-        jPanel1.add(lblGarrafonesVendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, -1, -1));
+        jPanel1.add(lblGarrafonesVendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 230, -1, -1));
 
         lblLitrosVendidos.setBackground(new java.awt.Color(102, 102, 102));
         lblLitrosVendidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblLitrosVendidos.setForeground(new java.awt.Color(102, 102, 102));
         lblLitrosVendidos.setText("Litros Vendidos");
-        jPanel1.add(lblLitrosVendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 390, -1, -1));
-
-        lblDineroCaja.setBackground(new java.awt.Color(102, 102, 102));
-        lblDineroCaja.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblDineroCaja.setForeground(new java.awt.Color(102, 102, 102));
-        lblDineroCaja.setText("Dinero En Caja");
-        jPanel1.add(lblDineroCaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 350, -1, -1));
-
-        lblFaltante.setBackground(new java.awt.Color(102, 102, 102));
-        lblFaltante.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        lblFaltante.setForeground(new java.awt.Color(102, 102, 102));
-        lblFaltante.setText("Faltante");
-        jPanel1.add(lblFaltante, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, -1, -1));
-
-        txtLecturaMedidor.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtLecturaMedidorMouseClicked(evt);
-            }
-        });
-        jPanel1.add(txtLecturaMedidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, 141, -1));
-
-        txtGarrafonesRuta.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtGarrafonesRutaMouseClicked(evt);
-            }
-        });
-        jPanel1.add(txtGarrafonesRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 141, -1));
-
-        txtLecturaAnterior.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtLecturaAnteriorMouseClicked(evt);
-            }
-        });
-        jPanel1.add(txtLecturaAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 141, -1));
+        jPanel1.add(lblLitrosVendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 350, -1, -1));
 
         txtPagadosTrasferencia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtPagadosTrasferenciaMouseClicked(evt);
             }
         });
-        jPanel1.add(txtPagadosTrasferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 141, -1));
+        jPanel1.add(txtPagadosTrasferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 260, 90, -1));
 
         txtGarrafonesVaciados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtGarrafonesVaciadosMouseClicked(evt);
             }
         });
-        jPanel1.add(txtGarrafonesVaciados, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, 141, -1));
+        jPanel1.add(txtGarrafonesVaciados, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 390, 90, -1));
 
         txtGarrafonesNuevos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtGarrafonesNuevosMouseClicked(evt);
             }
         });
-        jPanel1.add(txtGarrafonesNuevos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, 141, -1));
-
-        txtLitrosVendidos.setFocusable(false);
-        jPanel1.add(txtLitrosVendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 141, -1));
-
-        txtDineroCaja.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                txtDineroCajaMouseClicked(evt);
-            }
-        });
-        jPanel1.add(txtDineroCaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, 141, -1));
-
-        txtGarrafonesVendidos.setFocusable(false);
-        jPanel1.add(txtGarrafonesVendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, 141, -1));
-
-        txtFaltante.setFocusable(false);
-        jPanel1.add(txtFaltante, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 510, 141, -1));
-
-        txtDineroTotal.setFocusable(false);
-        jPanel1.add(txtDineroTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 470, 141, -1));
+        jPanel1.add(txtGarrafonesNuevos, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 290, 90, -1));
 
         jPanel2.setBackground(new java.awt.Color(58, 138, 236));
 
         lblBienvenido.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 36)); // NOI18N
         lblBienvenido.setForeground(new java.awt.Color(255, 255, 255));
-        lblBienvenido.setText("Cierre de caja");
+        lblBienvenido.setText("Reporte de ventas");
 
         txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -225,9 +191,9 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 411, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 325, Short.MAX_VALUE)
                 .addComponent(lblBienvenido)
-                .addGap(76, 76, 76))
+                .addGap(164, 164, 164))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,19 +201,20 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(lblBienvenido)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addComponent(txtUsuario)))
+                        .addGap(14, 14, 14)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtUsuario)
+                            .addComponent(lblBienvenido))))
                 .addGap(20, 20, 20))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 910, 90));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 990, 90));
 
         btnCalcular.setBackground(new java.awt.Color(58, 138, 236));
         btnCalcular.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
         btnCalcular.setForeground(new java.awt.Color(255, 255, 255));
-        btnCalcular.setText("Calcular");
+        btnCalcular.setText("Generar");
         btnCalcular.setBorder(null);
         btnCalcular.setBorderPainted(false);
         btnCalcular.addActionListener(new java.awt.event.ActionListener() {
@@ -255,7 +222,7 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
                 btnCalcularActionPerformed(evt);
             }
         });
-        jPanel1.add(btnCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 250, 170, 40));
+        jPanel1.add(btnCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 340, 120, 40));
 
         btnLimpiar.setBackground(new java.awt.Color(58, 138, 236));
         btnLimpiar.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
@@ -268,20 +235,7 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
                 btnLimpiarActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 310, 170, 40));
-
-        btnGuardar.setBackground(new java.awt.Color(58, 138, 236));
-        btnGuardar.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
-        btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
-        btnGuardar.setText("Guardar");
-        btnGuardar.setBorder(null);
-        btnGuardar.setBorderPainted(false);
-        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 370, 170, 40));
+        jPanel1.add(btnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 340, 120, 40));
 
         btnCancelar.setBackground(new java.awt.Color(58, 138, 236));
         btnCancelar.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
@@ -296,19 +250,94 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
         });
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 520, 110, 40));
 
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 230, 40, -1));
+
+        jLabel2.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setText("Total");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 200, -1, -1));
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 320, 40, -1));
+
+        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField3ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 260, 40, -1));
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 290, 40, -1));
+
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("Cantidad");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
+        jPanel1.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 130, -1));
+        jPanel1.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 280, 130, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setText("a");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 20, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setText("Seleccione fechas ");
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 240, -1, -1));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("De");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 280, -1, -1));
+
+        txtGarrafonesVaciados1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtGarrafonesVaciados1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(txtGarrafonesVaciados1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 320, 90, -1));
+
+        txtGarrafonesVaciados2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtGarrafonesVaciados2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(txtGarrafonesVaciados2, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 230, 90, -1));
+
+        txtGarrafonesVaciados3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtGarrafonesVaciados3MouseClicked(evt);
+            }
+        });
+        jPanel1.add(txtGarrafonesVaciados3, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 350, 90, -1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 6, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 896, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 977, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 6, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -323,25 +352,9 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
 
     }//GEN-LAST:event_btnLimpiarActionPerformed
 
-    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-
-    }//GEN-LAST:event_btnGuardarActionPerformed
-
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
 
     }//GEN-LAST:event_btnCancelarActionPerformed
-
-    private void txtLecturaMedidorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLecturaMedidorMouseClicked
-        quitarBorde(txtLecturaMedidor);
-    }//GEN-LAST:event_txtLecturaMedidorMouseClicked
-
-    private void txtLecturaAnteriorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLecturaAnteriorMouseClicked
-         quitarBorde(txtLecturaAnterior);
-    }//GEN-LAST:event_txtLecturaAnteriorMouseClicked
-
-    private void txtGarrafonesRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGarrafonesRutaMouseClicked
-        quitarBorde(txtGarrafonesRuta);
-    }//GEN-LAST:event_txtGarrafonesRutaMouseClicked
 
     private void txtGarrafonesVaciadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGarrafonesVaciadosMouseClicked
         quitarBorde(txtGarrafonesVaciados);
@@ -355,9 +368,33 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
         quitarBorde(txtGarrafonesNuevos);
     }//GEN-LAST:event_txtGarrafonesNuevosMouseClicked
 
-    private void txtDineroCajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDineroCajaMouseClicked
-        quitarBorde(txtDineroCaja);
-    }//GEN-LAST:event_txtDineroCajaMouseClicked
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField3ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void txtGarrafonesVaciados1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGarrafonesVaciados1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGarrafonesVaciados1MouseClicked
+
+    private void txtGarrafonesVaciados2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGarrafonesVaciados2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGarrafonesVaciados2MouseClicked
+
+    private void txtGarrafonesVaciados3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGarrafonesVaciados3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtGarrafonesVaciados3MouseClicked
     
     public void quitarBorde(JTextField field){
          Border border = BorderFactory.createLineBorder(Color.black);
@@ -367,33 +404,33 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnCancelar;
-    private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     private javax.swing.JLabel lblBienvenido;
-    private javax.swing.JLabel lblDineroCaja;
     private javax.swing.JLabel lblDineroVenta;
-    private javax.swing.JLabel lblFaltante;
     private javax.swing.JLabel lblGarrafonesNuevos;
-    private javax.swing.JLabel lblGarrafonesRuta;
     private javax.swing.JLabel lblGarrafonesVaciados;
     private javax.swing.JLabel lblGarrafonesVendidos;
-    private javax.swing.JLabel lblLecturaMedidor;
     private javax.swing.JLabel lblLitrosVendidos;
     private javax.swing.JLabel lblPagadosTranasferencia;
-    private javax.swing.JTextField txtDineroCaja;
-    private javax.swing.JTextField txtDineroTotal;
-    private javax.swing.JTextField txtFaltante;
     private javax.swing.JTextField txtGarrafonesNuevos;
-    private javax.swing.JTextField txtGarrafonesRuta;
     private javax.swing.JTextField txtGarrafonesVaciados;
-    private javax.swing.JTextField txtGarrafonesVendidos;
-    private javax.swing.JTextField txtLecturaAnterior;
-    private javax.swing.JTextField txtLecturaMedidor;
-    private javax.swing.JTextField txtLitrosVendidos;
+    private javax.swing.JTextField txtGarrafonesVaciados1;
+    private javax.swing.JTextField txtGarrafonesVaciados2;
+    private javax.swing.JTextField txtGarrafonesVaciados3;
     private javax.swing.JTextField txtPagadosTrasferencia;
     private javax.swing.JLabel txtUsuario;
     // End of variables declaration//GEN-END:variables
