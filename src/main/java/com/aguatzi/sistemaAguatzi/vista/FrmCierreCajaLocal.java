@@ -4,8 +4,15 @@
  */
 package com.aguatzi.sistemaAguatzi.vista;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+import javax.swing.border.Border;
 
 /**
  *
@@ -16,6 +23,8 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
     /**
      * Creates new form FrmCierreCajaLocal
      */
+    UIManager UI;
+
     public FrmCierreCajaLocal() {
 
         initComponents();
@@ -56,12 +65,14 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
         jPanel2 = new javax.swing.JPanel();
         lblBienvenido = new javax.swing.JLabel();
         txtUsuario = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         btnCalcular = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Cierre de caja");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -106,7 +117,7 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
         lblDineroVenta.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblDineroVenta.setForeground(new java.awt.Color(102, 102, 102));
         lblDineroVenta.setText("Dinero Venta Total");
-        jPanel1.add(lblDineroVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 480, -1, -1));
+        jPanel1.add(lblDineroVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 470, -1, -1));
 
         lblGarrafonesVendidos.setBackground(new java.awt.Color(102, 102, 102));
         lblGarrafonesVendidos.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -130,16 +141,58 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
         lblFaltante.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         lblFaltante.setForeground(new java.awt.Color(102, 102, 102));
         lblFaltante.setText("Faltante");
-        jPanel1.add(lblFaltante, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 520, -1, -1));
+        jPanel1.add(lblFaltante, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 510, -1, -1));
+
+        txtLecturaMedidor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtLecturaMedidorMouseClicked(evt);
+            }
+        });
         jPanel1.add(txtLecturaMedidor, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, 141, -1));
+
+        txtGarrafonesRuta.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtGarrafonesRutaMouseClicked(evt);
+            }
+        });
         jPanel1.add(txtGarrafonesRuta, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 190, 141, -1));
+
+        txtLecturaAnterior.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtLecturaAnteriorMouseClicked(evt);
+            }
+        });
         jPanel1.add(txtLecturaAnterior, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 150, 141, -1));
+
+        txtPagadosTrasferencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtPagadosTrasferenciaMouseClicked(evt);
+            }
+        });
         jPanel1.add(txtPagadosTrasferencia, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 270, 141, -1));
+
+        txtGarrafonesVaciados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtGarrafonesVaciadosMouseClicked(evt);
+            }
+        });
         jPanel1.add(txtGarrafonesVaciados, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 230, 141, -1));
+
+        txtGarrafonesNuevos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtGarrafonesNuevosMouseClicked(evt);
+            }
+        });
         jPanel1.add(txtGarrafonesNuevos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 310, 141, -1));
 
         txtLitrosVendidos.setFocusable(false);
         jPanel1.add(txtLitrosVendidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 390, 141, -1));
+
+        txtDineroCaja.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtDineroCajaMouseClicked(evt);
+            }
+        });
         jPanel1.add(txtDineroCaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 350, 141, -1));
 
         txtGarrafonesVendidos.setFocusable(false);
@@ -157,34 +210,39 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
         lblBienvenido.setForeground(new java.awt.Color(255, 255, 255));
         lblBienvenido.setText("Cierre de caja");
 
-        txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        txtUsuario.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         txtUsuario.setForeground(new java.awt.Color(255, 255, 255));
         txtUsuario.setText("Usuario");
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/user.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(80, 80, 80)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtUsuario)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 444, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 411, Short.MAX_VALUE)
                 .addComponent(lblBienvenido)
                 .addGap(76, 76, 76))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(lblBienvenido)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(lblBienvenido)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(txtUsuario)))
                 .addGap(20, 20, 20))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(txtUsuario)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 900, 90));
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 0, 910, 90));
 
         btnCalcular.setBackground(new java.awt.Color(58, 138, 236));
         btnCalcular.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
@@ -273,12 +331,45 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
 
     }//GEN-LAST:event_btnCancelarActionPerformed
 
+    private void txtLecturaMedidorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLecturaMedidorMouseClicked
+        quitarBorde(txtLecturaMedidor);
+    }//GEN-LAST:event_txtLecturaMedidorMouseClicked
+
+    private void txtLecturaAnteriorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtLecturaAnteriorMouseClicked
+         quitarBorde(txtLecturaAnterior);
+    }//GEN-LAST:event_txtLecturaAnteriorMouseClicked
+
+    private void txtGarrafonesRutaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGarrafonesRutaMouseClicked
+        quitarBorde(txtGarrafonesRuta);
+    }//GEN-LAST:event_txtGarrafonesRutaMouseClicked
+
+    private void txtGarrafonesVaciadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGarrafonesVaciadosMouseClicked
+        quitarBorde(txtGarrafonesVaciados);
+    }//GEN-LAST:event_txtGarrafonesVaciadosMouseClicked
+
+    private void txtPagadosTrasferenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtPagadosTrasferenciaMouseClicked
+        quitarBorde(txtPagadosTrasferencia);
+    }//GEN-LAST:event_txtPagadosTrasferenciaMouseClicked
+
+    private void txtGarrafonesNuevosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtGarrafonesNuevosMouseClicked
+        quitarBorde(txtGarrafonesNuevos);
+    }//GEN-LAST:event_txtGarrafonesNuevosMouseClicked
+
+    private void txtDineroCajaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtDineroCajaMouseClicked
+        quitarBorde(txtDineroCaja);
+    }//GEN-LAST:event_txtDineroCajaMouseClicked
+    
+    public void quitarBorde(JTextField field){
+         Border border = BorderFactory.createLineBorder(Color.black);
+         field.setBorder(border);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCalcular;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -384,17 +475,37 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
 
     @Override
     public void mostrarMensaje(String mensaje) {
-        JOptionPane.showMessageDialog(this, mensaje, "Aviso", JOptionPane.INFORMATION_MESSAGE);
+        UI = null;
+        UI.put("OptionPane.background", new Color(58, 138, 236));
+        UI.put("Panel.background", new Color(58, 138, 236));
+        JOptionPane.showMessageDialog(this, "<html><p style = \"color:white \">" + mensaje.replace("\n", "<br>") + "</p></html>", "Aviso", JOptionPane.PLAIN_MESSAGE, icono("/imagenes/gota.png", 40, 40));
+
     }
 
     @Override
     public void mostrarMensajeError(String mensajeError) {
-        JOptionPane.showMessageDialog(this, mensajeError, "Error", JOptionPane.ERROR_MESSAGE);
+        UI = null;
+        UI.put("OptionPane.background", new Color(58, 138, 236));
+        UI.put("Panel.background", new Color(58, 138, 236));
+        JOptionPane.showMessageDialog(this, "<html><p style = \"color:white \">" + mensajeError.replace("\n", "<br>") + "</p></html>", "Error", JOptionPane.PLAIN_MESSAGE, icono("/imagenes/gota.png", 40, 40));
+    }
+
+    @Override
+    public int mostrarMensajeConfirmacion(String mensaje) {
+        UI = null;
+        UI.put("OptionPane.background", new Color(58, 138, 236));
+        UI.put("Panel.background", new Color(58, 138, 236));
+        return JOptionPane.showConfirmDialog(this, "<html><p style = \"color:white; font:12px; \">" + mensaje.replace("\n", "<br>") + "</p></html>", "Mensaje de confirmación", JOptionPane.YES_NO_OPTION, HEIGHT, icono("/imagenes/gota.png", 60, 60));
     }
 
     @Override
     public void eliminarVentana() {
         this.dispose();
+    }
+
+    public Icon icono(String path, int width, int heigth) {
+        Icon img = new ImageIcon(new ImageIcon(getClass().getResource(path)).getImage().getScaledInstance(width, heigth, heigth));
+        return img;
     }
 
     private void limpiarCampos() {
@@ -419,27 +530,57 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
         return campo.isEmpty();
     }
 
+    private void cambiarColor(JTextField textField) {
+        if (textField.getText().trim().isEmpty()) {
+            Border border = BorderFactory.createLineBorder(Color.red, 2);
+            textField.setBorder(border);
+        }
+        if (!contieneSoloNumeros(textField.getText())) {
+            Border border = BorderFactory.createLineBorder(Color.red, 2);
+            textField.setBorder(border);
+        }
+    }
+    
     @Override
     public boolean verificarCampos() {
         if (CampoVacio(txtLecturaMedidor.getText()) == true || CampoVacio(txtLecturaAnterior.getText()) == true || CampoVacio(txtGarrafonesRuta.getText()) == true || CampoVacio(txtGarrafonesVaciados.getText()) == true || CampoVacio(txtPagadosTrasferencia.getText()) == true || CampoVacio(txtGarrafonesNuevos.getText()) == true || CampoVacio(txtDineroCaja.getText()) == true) {
+            cambiarColor(txtLecturaMedidor);
+            cambiarColor(txtLecturaAnterior);
+            cambiarColor(txtGarrafonesRuta);
+            cambiarColor(txtGarrafonesVaciados);
+            cambiarColor(txtPagadosTrasferencia);
+            cambiarColor(txtGarrafonesNuevos);
+            cambiarColor(txtDineroCaja);
             return false;
         }
         if (contieneSoloNumeros(txtLecturaMedidor.getText()) == false || contieneSoloNumeros(txtLecturaAnterior.getText()) == false || contieneSoloNumeros(txtGarrafonesRuta.getText()) == false || contieneSoloNumeros(txtGarrafonesVaciados.getText()) == false || contieneSoloNumeros(txtPagadosTrasferencia.getText()) == false || contieneSoloNumeros(txtGarrafonesNuevos.getText()) == false || contieneSoloNumeros(txtDineroCaja.getText()) == false) {
+            cambiarColor(txtLecturaMedidor);
+            
+            
+            cambiarColor(txtLecturaAnterior);
+            cambiarColor(txtGarrafonesRuta);
+            cambiarColor(txtGarrafonesVaciados);
+            cambiarColor(txtPagadosTrasferencia);
+            cambiarColor(txtGarrafonesNuevos);
+            cambiarColor(txtDineroCaja);
             return false;
+
         }
 
         return true;
     }
 
     @Override
-    public int mostrarMensajeConfirmacion(String mensaje) {
-        return JOptionPane.showConfirmDialog(this, mensaje, "¿Seguro que desea guardar?", JOptionPane.YES_NO_OPTION);
-    }
-
-    @Override
     public void setGuardable() {
         this.btnCalcular.setEnabled(false);
         this.btnGuardar.setEnabled(true);
+        this.txtLecturaMedidor.setEnabled(false);
+        this.txtLecturaAnterior.setEnabled(false);
+        this.txtGarrafonesRuta.setEnabled(false);
+        this.txtGarrafonesVaciados.setEnabled(false);
+        this.txtPagadosTrasferencia.setEnabled(false);
+        this.txtGarrafonesNuevos.setEnabled(false);
+        this.txtDineroCaja.setEnabled(false);
     }
 
     @Override
@@ -447,10 +588,39 @@ public class FrmCierreCajaLocal extends javax.swing.JFrame implements IFrmCierre
         this.btnCalcular.setEnabled(true);
         this.btnGuardar.setEnabled(false);
         this.limpiarCampos();
+        this.txtLecturaMedidor.setEnabled(true);
+        this.txtLecturaAnterior.setEnabled(true);
+        this.txtGarrafonesRuta.setEnabled(true);
+        this.txtGarrafonesVaciados.setEnabled(true);
+        this.txtPagadosTrasferencia.setEnabled(true);
+        this.txtGarrafonesNuevos.setEnabled(true);
+        this.txtDineroCaja.setEnabled(true);
+
     }
 
     @Override
     public void setNombreUsuario(String nombreUsuario) {
         txtUsuario.setText(nombreUsuario);
     }
+
+    @Override
+    public String getLitrosVendidos() {
+        return txtLitrosVendidos.getText();
+    }
+
+    @Override
+    public String getGarrafonesVendidos() {
+        return txtGarrafonesVendidos.getText();
+    }
+
+    @Override
+    public String getDineroTotal() {
+        return txtDineroTotal.getText();
+    }
+
+    @Override
+    public String getFaltante() {
+        return txtFaltante.getText();
+    }
+
 }

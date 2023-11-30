@@ -7,6 +7,7 @@ package com.aguatzi.sistemaAguatzi.controladores;
 import com.aguatzi.sistemaAguatzi.entidades.Usuario;
 import com.aguatzi.sistemaAguatzi.vista.FrmCierreCajaLocal;
 import com.aguatzi.sistemaAguatzi.vista.FrmIniciarSesion;
+import com.aguatzi.sistemaAguatzi.vista.FrmReporteVentas;
 import com.aguatzi.sistemaAguatzi.vista.IFrmMenuPrincipalLocal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +27,7 @@ public class ControladorMenuPrincipalLocal {
         this.frmMenuPrincipalLocal.agregarCierreDeCajaLocalListener(new CierreDeCajaListener());
         this.frmMenuPrincipalLocal.agregarCerrarSesionListener(new CerrarSesionListener());
         this.frmMenuPrincipalLocal.setNombreUsuario(this.usuario.getNombreUsuario());
+	this.frmMenuPrincipalLocal.agregarReporteVentasListener(new ReporteVentasListener());
     }
         
     class CierreDeCajaListener implements ActionListener{
@@ -47,6 +49,17 @@ public class ControladorMenuPrincipalLocal {
             FrmIniciarSesion frmIniciarSesion = new FrmIniciarSesion();
             frmIniciarSesion.setVisible(true);
             ControladorIniciarSesion controladorIniciarSesion = new ControladorIniciarSesion(frmIniciarSesion);
+        }
+    }
+   
+   class ReporteVentasListener implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frmMenuPrincipalLocal.eliminarVentana();
+	    FrmReporteVentas frmReporteVentas = new FrmReporteVentas();
+            frmReporteVentas.setVisible(true);
+            ControladorReporteVentas controladorReporteVentas = new ControladorReporteVentas(frmReporteVentas, usuario);
         }
     }
 }

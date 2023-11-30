@@ -11,13 +11,14 @@ import com.aguatzi.sistemaAguatzi.vista.FrmMenuPrincipalLocal;
 import com.aguatzi.sistemaAguatzi.vista.IFrmCierreCajaLocal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 /**
  *
  * @author mig_2
  */
 public class ControladorCierreCajaLocal {
-    
+
     private final IFrmCierreCajaLocal frmCierreCajaLocal;
     private final UnitOfWork unitOfWork;
     private final Usuario usuario;
@@ -36,13 +37,13 @@ public class ControladorCierreCajaLocal {
         this.frmCierreCajaLocal.setCalculable();
         unitOfWork = new UnitOfWork();
     }
-        
-    class CalcularListener implements ActionListener{
+
+    class CalcularListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(!frmCierreCajaLocal.verificarCampos()){
-                frmCierreCajaLocal.mostrarMensajeError("Datos invalidos!");
+            if (!frmCierreCajaLocal.verificarCampos()) {
+                frmCierreCajaLocal.mostrarMensaje("Datos faltantes o erroneos"+"\nVerifica los campos en rojo");
                 return;
             }
             float lecturaMedidor = Float.parseFloat(frmCierreCajaLocal.getLecturaMedidor());
@@ -52,32 +53,32 @@ public class ControladorCierreCajaLocal {
             int pagosTransferencia = Integer.parseInt(frmCierreCajaLocal.getPagadosTrasferencia());
             int garrafonesNuevos = Integer.parseInt(frmCierreCajaLocal.getGarrafonesNuevos());
             float dineroCaja = Float.parseFloat(frmCierreCajaLocal.getDineroCaja());
-            float litrosVendidos = lecturaAnterior-lecturaMedidor-garrafonesVaciados*CAPACIDAD_GARRAFON;
+            float litrosVendidos = lecturaAnterior - lecturaMedidor - garrafonesVaciados * CAPACIDAD_GARRAFON;
             frmCierreCajaLocal.setLitrosVendidos(String.valueOf(litrosVendidos));
-            float garrafonesVendidos = litrosVendidos/CAPACIDAD_GARRAFON-garrafonesRuta;
-            int garrafonesVendidosRedondeado = (int)garrafonesVendidos;
+            float garrafonesVendidos = litrosVendidos / CAPACIDAD_GARRAFON - garrafonesRuta;
+            int garrafonesVendidosRedondeado = (int) garrafonesVendidos;
             frmCierreCajaLocal.setGarrafonesVendidos(String.valueOf(garrafonesVendidosRedondeado));
-            float dineroTotal = garrafonesVendidos*PRECIO_GARRAFON_RELLEANDO+garrafonesNuevos*PRECIO_GARRAFON_NUEVO-pagosTransferencia*PRECIO_GARRAFON_RELLEANDO;
+            float dineroTotal = garrafonesVendidos * PRECIO_GARRAFON_RELLEANDO + garrafonesNuevos * PRECIO_GARRAFON_NUEVO - pagosTransferencia * PRECIO_GARRAFON_RELLEANDO;
             frmCierreCajaLocal.setDineroTotal(String.valueOf(dineroTotal));
-            float dineroFaltante = dineroTotal-dineroCaja;
+            float dineroFaltante = dineroTotal - dineroCaja;
             frmCierreCajaLocal.setFaltante(String.valueOf(dineroFaltante));
             frmCierreCajaLocal.setGuardable();
         }
     }
 
-    class LimpiarListener implements ActionListener{
+    class LimpiarListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             frmCierreCajaLocal.setCalculable();
         }
-    }        
-    
-    class GuardarListener implements ActionListener{
+    }
+
+    class GuardarListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(!frmCierreCajaLocal.verificarCampos()){
+            if (!frmCierreCajaLocal.verificarCampos()) {
                 frmCierreCajaLocal.mostrarMensajeError("Datos invalidos!");
                 return;
             }
@@ -88,31 +89,37 @@ public class ControladorCierreCajaLocal {
             int pagosTransferencia = Integer.parseInt(frmCierreCajaLocal.getPagadosTrasferencia());
             int garrafonesNuevos = Integer.parseInt(frmCierreCajaLocal.getGarrafonesNuevos());
             float dineroCaja = Float.parseFloat(frmCierreCajaLocal.getDineroCaja());
-            float litrosVendidos = lecturaAnterior-lecturaMedidor-garrafonesVaciados*CAPACIDAD_GARRAFON;
-            float garrafonesVendidos = litrosVendidos/CAPACIDAD_GARRAFON-garrafonesRuta;
-            int garrafonesVendidosRedondeado = (int)garrafonesVendidos;
-            float dineroTotal = garrafonesVendidos*PRECIO_GARRAFON_RELLEANDO+garrafonesNuevos*PRECIO_GARRAFON_NUEVO-pagosTransferencia*PRECIO_GARRAFON_RELLEANDO;
-            float dineroFaltante = dineroTotal-dineroCaja;
+            float litrosVendidos = lecturaAnterior - lecturaMedidor - garrafonesVaciados * CAPACIDAD_GARRAFON;
+            float garrafonesVendidos = litrosVendidos / CAPACIDAD_GARRAFON - garrafonesRuta;
+            int garrafonesVendidosRedondeado = (int) garrafonesVendidos;
+            float dineroTotal = garrafonesVendidos * PRECIO_GARRAFON_RELLEANDO + garrafonesNuevos * PRECIO_GARRAFON_NUEVO - pagosTransferencia * PRECIO_GARRAFON_RELLEANDO;
+            float dineroFaltante = dineroTotal - dineroCaja;
             Empleado empleado = unitOfWork.empleadosRepository().obtenerPorUsuario(usuario);
-            int respuesta = frmCierreCajaLocal.mostrarMensajeConfirmacion("¿Seguro que desea guardar el cierre de caja actual?");
-            if (respuesta!=0) {
+            int respuesta = frmCierreCajaLocal.mostrarMensajeConfirmacion("Resumen de cierre de caja" + "\nLitros vendidos: " + frmCierreCajaLocal.getLitrosVendidos() + "\nGarrafones vendidos: " + frmCierreCajaLocal.getGarrafonesVendidos() + "\nDinero en caja: " + frmCierreCajaLocal.getDineroCaja() + "\nDinero venta total:" + frmCierreCajaLocal.getDineroTotal() + "\nFaltante: " + frmCierreCajaLocal.getFaltante() + "\n¿Seguro que desea guardar el cierre de caja actual?"
+            );
+            if (respuesta != 0) {
                 return;
             }
-            if (empleado==null) {
+            if (empleado == null) {
                 frmCierreCajaLocal.mostrarMensajeError("El usuario actual no puede realizar este cierre de caja, no se como terminaste aqui :/");
                 return;
             }
-            CierreCajaLocal cierreCajaLocal = new CierreCajaLocal(lecturaMedidor, lecturaAnterior, garrafonesRuta, garrafonesVaciados, pagosTransferencia, garrafonesNuevos, dineroCaja, litrosVendidos, garrafonesVendidosRedondeado, dineroTotal, dineroFaltante, empleado);
+	    Date fecha = new Date();
+            CierreCajaLocal cierreCajaLocal = new CierreCajaLocal(lecturaMedidor, lecturaAnterior, garrafonesRuta, garrafonesVaciados, pagosTransferencia, garrafonesNuevos, dineroCaja, litrosVendidos, garrafonesVendidosRedondeado, dineroTotal, dineroFaltante,fecha, empleado);
             unitOfWork.cclRepository().agregar(cierreCajaLocal);
             frmCierreCajaLocal.mostrarMensaje("¡Cierre de caja realizado con éxito!");
             frmCierreCajaLocal.setCalculable();
         }
-    }      
-    
-    class CancelarListener implements ActionListener{
+    }
+
+    class CancelarListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+            int respuesta = frmCierreCajaLocal.mostrarMensajeConfirmacion("¿Seguro que desea cancelar el cierre de caja?");
+            if (respuesta != 0) {
+                return;
+            }
             frmCierreCajaLocal.eliminarVentana();
             String tipoUsuario = usuario.getTipoUsuario();
             switch (tipoUsuario) {
@@ -125,5 +132,5 @@ public class ControladorCierreCajaLocal {
                     throw new AssertionError();
             }
         }
-    }         
+    }
 }

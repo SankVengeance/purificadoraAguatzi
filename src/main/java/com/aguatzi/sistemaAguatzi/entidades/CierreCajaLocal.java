@@ -1,6 +1,7 @@
 package com.aguatzi.sistemaAguatzi.entidades;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.GeneratedValue;
@@ -9,8 +10,28 @@ import javax.persistence.Column;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 import java.util.Objects;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Temporal;
 
 @Entity
+@NamedQueries({
+	@NamedQuery(
+	    	name = "CierreCajaLocal.sumarDetallesPorFecha",
+	    	query = "SELECT SUM(ccl.garrafonesVendidos), " +
+			    "SUM(ccl.pagadosTransferencia), " +
+			    "SUM(ccl.garrafonesNuevosVendidos), " +
+			    "SUM(ccl.garrafonesVaciados), " +
+			    "SUM(ccl.litrosVendidos), " +
+			    "SUM(ccl.dineroTotal) " +
+		    	"FROM CierreCajaLocal ccl " +
+		    	"WHERE ccl.fecha BETWEEN :fechaInicio AND :fechaFin"
+	),
+	@NamedQuery(
+    		name = "CierreCajaLocal.obtenerEnRangoDeFechas",
+    		query = "SELECT ccl FROM CierreCajaLocal ccl WHERE ccl.fecha BETWEEN :fechaInicio AND :fechaFin"
+	)
+})
 public class CierreCajaLocal implements Serializable {
 
     @Id
@@ -50,6 +71,10 @@ public class CierreCajaLocal implements Serializable {
 
     @Column(name = "faltante", nullable = false)
     private float faltante;
+    
+    @Column(name="fecha",nullable=false)
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fecha;
 
     @ManyToOne
     @JoinColumn(name = "idEmpleado", nullable = false)
@@ -65,20 +90,22 @@ public class CierreCajaLocal implements Serializable {
         this.idCierreCajaLocal = idCierreCajaLocal;
     }
 
-    public CierreCajaLocal(float lecturaMedidor, float lecturaAnterior, int garrafonesRepartidor, int garrafonesVaciados, int pagadosTransferencia, int garrafonesNuevosVendidos, float dineroCaja, float litrosVendidos, int garrafonesVendidos, float dineroTotal, float faltante, Empleado empleado) {
-        this.lecturaMedidor = lecturaMedidor;
-        this.lecturaAnterior = lecturaAnterior;
-        this.garrafonesRepartidor = garrafonesRepartidor;
-        this.garrafonesVaciados = garrafonesVaciados;
-        this.pagadosTransferencia = pagadosTransferencia;
-        this.garrafonesNuevosVendidos = garrafonesNuevosVendidos;
-        this.dineroCaja = dineroCaja;
-        this.litrosVendidos = litrosVendidos;
-        this.garrafonesVendidos = garrafonesVendidos;
-        this.dineroTotal = dineroTotal;
-        this.faltante = faltante;
-        this.empleado = empleado;
-    }
+	public CierreCajaLocal(float lecturaMedidor, float lecturaAnterior, int garrafonesRepartidor, int garrafonesVaciados, int pagadosTransferencia, int garrafonesNuevosVendidos, float dineroCaja, float litrosVendidos, int garrafonesVendidos, float dineroTotal, float faltante, Date fecha, Empleado empleado) {
+		this.lecturaMedidor = lecturaMedidor;
+		this.lecturaAnterior = lecturaAnterior;
+		this.garrafonesRepartidor = garrafonesRepartidor;
+		this.garrafonesVaciados = garrafonesVaciados;
+		this.pagadosTransferencia = pagadosTransferencia;
+		this.garrafonesNuevosVendidos = garrafonesNuevosVendidos;
+		this.dineroCaja = dineroCaja;
+		this.litrosVendidos = litrosVendidos;
+		this.garrafonesVendidos = garrafonesVendidos;
+		this.dineroTotal = dineroTotal;
+		this.faltante = faltante;
+		this.fecha = fecha;
+		this.empleado = empleado;
+	}
+
 
    
 
@@ -177,6 +204,16 @@ public class CierreCajaLocal implements Serializable {
     public void setFaltante(int faltante) {
         this.faltante = faltante;
     }
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
+	}
+
+    
 
     public Empleado getEmpleado() {
         return empleado;

@@ -11,6 +11,7 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
 
     public FrmIniciarSesion() {
         initComponents();
+
     }
 
     @SuppressWarnings("unchecked")
@@ -33,6 +34,8 @@ public class FrmIniciarSesion extends javax.swing.JFrame implements IFrmIniciarS
         jButton2.setText("jButton2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Purificadora Aguatzi");
+        setIconImages(getIconImages());
         setMinimumSize(new java.awt.Dimension(600, 400));
         setResizable(false);
         setSize(new java.awt.Dimension(600, 400));
