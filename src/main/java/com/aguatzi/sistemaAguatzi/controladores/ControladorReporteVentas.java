@@ -65,7 +65,6 @@ public class ControladorReporteVentas {
 				Date fechaFinalDate = Date.from(fechaFinal.atStartOfDay(ZoneId.systemDefault()).toInstant());
 				List<Object[]> resultados=unitOfWork.cclRepository().obtenerSumaDetallesPorFecha(fechaInicialDate, fechaFinalDate);
 			    	Object[] resultado = resultados.get(0);
-				System.out.println(resultado[0]);	
     				long cantidadGarrafonesVendidos = (long) resultado[0];
 			        long cantidadGarrafonesPagadosTransferencia = (long) resultado[1];
     				long cantidadGarrafonesNuevos= (long) resultado[2];
