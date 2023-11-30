@@ -11,6 +11,7 @@ import com.aguatzi.sistemaAguatzi.vista.FrmMenuPrincipalLocal;
 import com.aguatzi.sistemaAguatzi.vista.IFrmCierreCajaLocal;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 /**
  *
@@ -103,7 +104,8 @@ public class ControladorCierreCajaLocal {
                 frmCierreCajaLocal.mostrarMensajeError("El usuario actual no puede realizar este cierre de caja, no se como terminaste aqui :/");
                 return;
             }
-            CierreCajaLocal cierreCajaLocal = new CierreCajaLocal(lecturaMedidor, lecturaAnterior, garrafonesRuta, garrafonesVaciados, pagosTransferencia, garrafonesNuevos, dineroCaja, litrosVendidos, garrafonesVendidosRedondeado, dineroTotal, dineroFaltante, empleado);
+	    Date fecha = new Date();
+            CierreCajaLocal cierreCajaLocal = new CierreCajaLocal(lecturaMedidor, lecturaAnterior, garrafonesRuta, garrafonesVaciados, pagosTransferencia, garrafonesNuevos, dineroCaja, litrosVendidos, garrafonesVendidosRedondeado, dineroTotal, dineroFaltante,fecha, empleado);
             unitOfWork.cclRepository().agregar(cierreCajaLocal);
             frmCierreCajaLocal.mostrarMensaje("¡Cierre de caja realizado con éxito!");
             frmCierreCajaLocal.setCalculable();

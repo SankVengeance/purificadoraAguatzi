@@ -5,6 +5,8 @@
 package com.aguatzi.sistemaAguatzi.repositories;
 
 import com.aguatzi.sistemaAguatzi.entidades.CierreCajaLocal;
+import java.util.Date;
+import java.util.List;
 import javax.persistence.EntityManager;
 
 /**
@@ -17,4 +19,19 @@ public class CCLRepository extends RepositoryBase<CierreCajaLocal>{
         super(entityManager);
     }
     
+    public List<Object[]> obtenerSumaDetallesPorFecha(Date fechaInicio, Date fechaFin){
+	    List<Object[]> resultados = entityManager.createNamedQuery("CierreCajaLocal.sumarDetallesPorFecha")
+		.setParameter("fechaInicio", fechaInicio)
+		.setParameter("fechaFin", fechaFin)
+		.getResultList();
+	   return resultados;
+    }
+
+    public List<CierreCajaLocal> obtnerEnRangoDeFechas(Date fechaInicio, Date fechaFin){
+		List<CierreCajaLocal> cierres = entityManager.createNamedQuery("CierreCajaLocal.obtenerEnRangoDeFechas", CierreCajaLocal.class)
+        	.setParameter("fechaInicio", fechaInicio)
+        	.setParameter("fechaFin", fechaFin)
+        	.getResultList();
+		return cierres;
+    }
 }
