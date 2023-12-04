@@ -45,6 +45,9 @@ public class ControladorReporteVentas {
 	private final Usuario usuario;
     	private final UnitOfWork unitOfWork;
 
+	private final float PRECIO_GARRAFON_RELLEANDO = 13;
+	private final float PRECIO_GARRAFON_NUEVO = 100;
+	private final float CAPACIDAD_GARRAFON = 19.5f;
 	
 	public ControladorReporteVentas(FrmReporteVentas frmReporteVentas, Usuario usuario) {
 		this.frmReporteVentas = frmReporteVentas;
@@ -69,6 +72,10 @@ public class ControladorReporteVentas {
 			        long cantidadGarrafonesPagadosTransferencia = (long) resultado[1];
     				long cantidadGarrafonesNuevos= (long) resultado[2];
     				long cantidadGarrafonesVaciados = (long) resultado[3];
+				float totalGarrafonesVendidos = cantidadGarrafonesVendidos*PRECIO_GARRAFON_RELLEANDO;
+				float totalGarrafonesNuevos= cantidadGarrafonesNuevos*PRECIO_GARRAFON_NUEVO;
+				float totalGarrafonesPagadosTransferencia= cantidadGarrafonesPagadosTransferencia*PRECIO_GARRAFON_RELLEANDO; 
+				float totalGarrafonesVaciados =cantidadGarrafonesVaciados*PRECIO_GARRAFON_RELLEANDO;
     				double litrosVendidos = (double) resultado[4];
     				double dineroTotal = (double) resultado[5];
 				frmReporteVentas.setCantidadGarrafonesVendidos(Long.toString(cantidadGarrafonesVendidos));
@@ -76,6 +83,10 @@ public class ControladorReporteVentas {
 				frmReporteVentas.setCantidadGarrafonesVaciados(Long.toString(cantidadGarrafonesVaciados));
 				frmReporteVentas.setCantidadGarrafonesPagadosTransferencia(Long.toString(cantidadGarrafonesPagadosTransferencia));
 				frmReporteVentas.setTotalLitrosVendidos(Double.toString(litrosVendidos));
+				frmReporteVentas.setTotalGarrafonesVendidos(Float.toString(totalGarrafonesVendidos));
+				frmReporteVentas.setTotalGarrafonesNuevos(Float.toString(totalGarrafonesNuevos));
+				frmReporteVentas.setTotalGarrafonesPagadosTransferencia(Float.toString(totalGarrafonesPagadosTransferencia));
+				frmReporteVentas.setTotalGarrafonesVaciados(Float.toString(totalGarrafonesVaciados));
 				frmReporteVentas.setDineroVentaTotal(Double.toString(dineroTotal));
 			}
 		}
