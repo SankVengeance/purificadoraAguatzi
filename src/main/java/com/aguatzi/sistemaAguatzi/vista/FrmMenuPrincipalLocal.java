@@ -17,133 +17,119 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
     }
 
     @SuppressWarnings("unchecked")
-        // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-        private void initComponents() {
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
 
-                background3 = new javax.swing.JPanel();
-                head3 = new javax.swing.JPanel();
-                txtBienvenida = new javax.swing.JLabel();
-                txtNombreUsuario = new javax.swing.JLabel();
-                btnMiHorario = new javax.swing.JButton();
-                btnCerrarSesion = new javax.swing.JButton();
-                btnCierreCaja = new javax.swing.JButton();
-                btnReporteVentas = new javax.swing.JButton();
+        background3 = new javax.swing.JPanel();
+        head3 = new javax.swing.JPanel();
+        txtBienvenida = new javax.swing.JLabel();
+        txtNombreUsuario = new javax.swing.JLabel();
+        btnMiHorario = new javax.swing.JButton();
+        btnCerrarSesion = new javax.swing.JButton();
+        btnCierreCaja = new javax.swing.JButton();
 
-                setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-                setTitle("Sistema Purificadora Aguatzi");
-                setResizable(false);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema Purificadora Aguatzi");
+        setResizable(false);
 
-                background3.setBackground(new java.awt.Color(255, 255, 255));
-                background3.setMaximumSize(new java.awt.Dimension(600, 400));
-                background3.setMinimumSize(new java.awt.Dimension(600, 400));
-                background3.setPreferredSize(new java.awt.Dimension(600, 400));
-                background3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        background3.setBackground(new java.awt.Color(255, 255, 255));
+        background3.setMaximumSize(new java.awt.Dimension(600, 400));
+        background3.setMinimumSize(new java.awt.Dimension(600, 400));
+        background3.setPreferredSize(new java.awt.Dimension(600, 400));
+        background3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-                head3.setBackground(new java.awt.Color(58, 138, 236));
+        head3.setBackground(new java.awt.Color(58, 138, 236));
 
-                txtBienvenida.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 24)); // NOI18N
-                txtBienvenida.setForeground(new java.awt.Color(255, 255, 255));
-                txtBienvenida.setText("Bienvenido:");
+        txtBienvenida.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 24)); // NOI18N
+        txtBienvenida.setForeground(new java.awt.Color(255, 255, 255));
+        txtBienvenida.setText("Bienvenido:");
 
-                txtNombreUsuario.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 24)); // NOI18N
-                txtNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
-                txtNombreUsuario.setText("nombreUsuario");
+        txtNombreUsuario.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 24)); // NOI18N
+        txtNombreUsuario.setForeground(new java.awt.Color(255, 255, 255));
+        txtNombreUsuario.setText("nombreUsuario");
 
-                javax.swing.GroupLayout head3Layout = new javax.swing.GroupLayout(head3);
-                head3.setLayout(head3Layout);
-                head3Layout.setHorizontalGroup(
-                        head3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(head3Layout.createSequentialGroup()
-                                .addGap(25, 25, 25)
-                                .addComponent(txtBienvenida)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtNombreUsuario)
-                                .addContainerGap(359, Short.MAX_VALUE))
-                );
-                head3Layout.setVerticalGroup(
-                        head3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(head3Layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addGroup(head3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtBienvenida)
-                                        .addComponent(txtNombreUsuario))
-                                .addContainerGap(34, Short.MAX_VALUE))
-                );
+        javax.swing.GroupLayout head3Layout = new javax.swing.GroupLayout(head3);
+        head3.setLayout(head3Layout);
+        head3Layout.setHorizontalGroup(
+            head3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(head3Layout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(txtBienvenida)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombreUsuario)
+                .addContainerGap(359, Short.MAX_VALUE))
+        );
+        head3Layout.setVerticalGroup(
+            head3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(head3Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(head3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBienvenida)
+                    .addComponent(txtNombreUsuario))
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
 
-                background3.add(head3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 90));
+        background3.add(head3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 90));
 
-                btnMiHorario.setBackground(new java.awt.Color(58, 138, 236));
-                btnMiHorario.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
-                btnMiHorario.setForeground(new java.awt.Color(255, 255, 255));
-                btnMiHorario.setText("Mi horario");
-                btnMiHorario.setBorder(null);
-                btnMiHorario.setBorderPainted(false);
-                btnMiHorario.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnMiHorarioActionPerformed(evt);
-                        }
-                });
-                background3.add(btnMiHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 180, 40));
+        btnMiHorario.setBackground(new java.awt.Color(58, 138, 236));
+        btnMiHorario.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
+        btnMiHorario.setForeground(new java.awt.Color(255, 255, 255));
+        btnMiHorario.setText("Mi horario");
+        btnMiHorario.setBorder(null);
+        btnMiHorario.setBorderPainted(false);
+        btnMiHorario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMiHorarioActionPerformed(evt);
+            }
+        });
+        background3.add(btnMiHorario, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 200, 180, 40));
 
-                btnCerrarSesion.setBackground(new java.awt.Color(58, 138, 236));
-                btnCerrarSesion.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
-                btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
-                btnCerrarSesion.setText("Cerrar Sesión");
-                btnCerrarSesion.setBorder(null);
-                btnCerrarSesion.setBorderPainted(false);
-                btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnCerrarSesionActionPerformed(evt);
-                        }
-                });
-                background3.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 180, 40));
+        btnCerrarSesion.setBackground(new java.awt.Color(58, 138, 236));
+        btnCerrarSesion.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
+        btnCerrarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        btnCerrarSesion.setText("Cerrar Sesión");
+        btnCerrarSesion.setBorder(null);
+        btnCerrarSesion.setBorderPainted(false);
+        btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCerrarSesionActionPerformed(evt);
+            }
+        });
+        background3.add(btnCerrarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 320, 180, 40));
 
-                btnCierreCaja.setBackground(new java.awt.Color(58, 138, 236));
-                btnCierreCaja.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
-                btnCierreCaja.setForeground(new java.awt.Color(255, 255, 255));
-                btnCierreCaja.setText("Cierre De Caja");
-                btnCierreCaja.setBorder(null);
-                btnCierreCaja.setBorderPainted(false);
-                btnCierreCaja.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnCierreCajaActionPerformed(evt);
-                        }
-                });
-                background3.add(btnCierreCaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 180, 40));
+        btnCierreCaja.setBackground(new java.awt.Color(58, 138, 236));
+        btnCierreCaja.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
+        btnCierreCaja.setForeground(new java.awt.Color(255, 255, 255));
+        btnCierreCaja.setText("Cierre De Caja");
+        btnCierreCaja.setBorder(null);
+        btnCierreCaja.setBorderPainted(false);
+        btnCierreCaja.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCierreCajaActionPerformed(evt);
+            }
+        });
+        background3.add(btnCierreCaja, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, 180, 40));
 
-                btnReporteVentas.setBackground(new java.awt.Color(58, 138, 236));
-                btnReporteVentas.setFont(new java.awt.Font("Nirmala UI Semilight", 1, 14)); // NOI18N
-                btnReporteVentas.setForeground(new java.awt.Color(255, 255, 255));
-                btnReporteVentas.setText("Reporte De Ventas");
-                btnReporteVentas.setBorder(null);
-                btnReporteVentas.setBorderPainted(false);
-                btnReporteVentas.addActionListener(new java.awt.event.ActionListener() {
-                        public void actionPerformed(java.awt.event.ActionEvent evt) {
-                                btnReporteVentasActionPerformed(evt);
-                        }
-                });
-                background3.add(btnReporteVentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 380, 180, 40));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(background3, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(background3, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
-                javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-                getContentPane().setLayout(layout);
-                layout.setHorizontalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(background3, javax.swing.GroupLayout.PREFERRED_SIZE, 675, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                );
-                layout.setVerticalGroup(
-                        layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(background3, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                );
-
-                pack();
-                setLocationRelativeTo(null);
-        }// </editor-fold>//GEN-END:initComponents
+        pack();
+        setLocationRelativeTo(null);
+    }// </editor-fold>//GEN-END:initComponents
 
 
     private void btnMiHorarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMiHorarioActionPerformed
@@ -158,21 +144,16 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCierreCajaActionPerformed
 
-        private void btnReporteVentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReporteVentasActionPerformed
-                // TODO add your handling code here:
-        }//GEN-LAST:event_btnReporteVentasActionPerformed
 
-
-        // Variables declaration - do not modify//GEN-BEGIN:variables
-        private javax.swing.JPanel background3;
-        private javax.swing.JButton btnCerrarSesion;
-        private javax.swing.JButton btnCierreCaja;
-        private javax.swing.JButton btnMiHorario;
-        private javax.swing.JButton btnReporteVentas;
-        private javax.swing.JPanel head3;
-        private javax.swing.JLabel txtBienvenida;
-        private javax.swing.JLabel txtNombreUsuario;
-        // End of variables declaration//GEN-END:variables
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel background3;
+    private javax.swing.JButton btnCerrarSesion;
+    private javax.swing.JButton btnCierreCaja;
+    private javax.swing.JButton btnMiHorario;
+    private javax.swing.JPanel head3;
+    private javax.swing.JLabel txtBienvenida;
+    private javax.swing.JLabel txtNombreUsuario;
+    // End of variables declaration//GEN-END:variables
 
     @Override
     public void agregarCierreDeCajaLocalListener(ActionListener actionListener) {
@@ -191,7 +172,7 @@ public class FrmMenuPrincipalLocal extends javax.swing.JFrame implements IFrmMen
 	
     @Override
     public void agregarReporteVentasListener(ActionListener actionListener) {
-        btnReporteVentas.addActionListener(actionListener);
+      
     }
     
     @Override

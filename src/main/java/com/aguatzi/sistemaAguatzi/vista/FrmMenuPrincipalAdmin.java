@@ -194,22 +194,22 @@ public class FrmMenuPrincipalAdmin extends javax.swing.JFrame implements IFrmMen
     // End of variables declaration//GEN-END:variables
 
     @Override
-    public void agregarReporteVentas(ActionListener actionListener) {
+    public void agregarReporteVentasListener(ActionListener actionListener) {
         btnReportes.addActionListener(actionListener);
     }
 
     @Override
-    public void agregarCrearHorarios(ActionListener actionListener) {
+    public void agregarCrearHorariosListener(ActionListener actionListener) {
         btnHorarios.addActionListener(actionListener);
     }
 
     @Override
-    public void agregarRegistrarEmpleado(ActionListener actionListener) {
+    public void agregarRegistrarEmpleadoListener(ActionListener actionListener) {
         btnEmpleado.addActionListener(actionListener);
     }
 
     @Override
-    public void agregarCambiarPrecios(ActionListener actionListener) {
+    public void agregarCambiarPreciosListener(ActionListener actionListener) {
         btnPrecios.addActionListener(actionListener);
     }
 
@@ -227,5 +227,6 @@ public class FrmMenuPrincipalAdmin extends javax.swing.JFrame implements IFrmMen
     public void eliminarVentana() {
         this.dispose();
     }
+
 
 }

@@ -6,6 +6,7 @@ package com.aguatzi.sistemaAguatzi.controladores;
 
 import com.aguatzi.sistemaAguatzi.entidades.Usuario;
 import com.aguatzi.sistemaAguatzi.utils.Encriptador;
+import com.aguatzi.sistemaAguatzi.vista.FrmMenuPrincipalAdmin;
 import com.aguatzi.sistemaAguatzi.vista.FrmMenuPrincipalLocal;
 import com.aguatzi.sistemaAguatzi.vista.IFrmIniciarSesion;
 import java.awt.event.ActionEvent;
@@ -17,18 +18,17 @@ import javax.swing.JOptionPane;
  * @author mig_2
  */
 public class ControladorIniciarSesion {
-    
+
     private IFrmIniciarSesion frmIniciarSesion;
     private UnitOfWork unitOfWork;
-    
 
     public ControladorIniciarSesion(IFrmIniciarSesion frmIniciarSesion) {
         this.frmIniciarSesion = frmIniciarSesion;
         frmIniciarSesion.agregarIniciarSesionListener(new IniciarSesionListener());
         unitOfWork = new UnitOfWork();
     }
-        
-    class IniciarSesionListener implements ActionListener{
+
+    class IniciarSesionListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -56,7 +56,9 @@ public class ControladorIniciarSesion {
                         // Handle repartidor logic
                         break;
                     case "admin":
-                        // Handle admin logic
+                        FrmMenuPrincipalAdmin frmMenuPrincipalAdmin = new FrmMenuPrincipalAdmin();
+                        ControladorMenuPrincipalAdmin controladorMenuPrincipalAdmin = new ControladorMenuPrincipalAdmin(frmMenuPrincipalAdmin, usuario);
+                        frmMenuPrincipalAdmin.setVisible(true);
                         break;
                     default:
                         frmIniciarSesion.mostrarMensajeError("No se pudo iniciar sesión");

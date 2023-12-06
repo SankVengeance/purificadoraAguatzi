@@ -12,13 +12,13 @@ import java.awt.event.ActionListener;
  */
 public interface IFrmMenuPrincipalAdmin {
 
-    public void agregarReporteVentas(ActionListener actionListener);
+    public void agregarReporteVentasListener(ActionListener actionListener);
 
-    public void agregarCrearHorarios(ActionListener actionListener);
+    public void agregarCrearHorariosListener(ActionListener actionListener);
 
-    public void agregarRegistrarEmpleado(ActionListener actionListener);
+    public void agregarRegistrarEmpleadoListener(ActionListener actionListener);
 
-    public void agregarCambiarPrecios(ActionListener actionListener);
+    public void agregarCambiarPreciosListener(ActionListener actionListener);
 
     public void agregarCerrarSesionListener(ActionListener actionListener);
 

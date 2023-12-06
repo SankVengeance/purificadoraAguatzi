@@ -11,9 +11,9 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-
 import com.aguatzi.sistemaAguatzi.entidades.CierreCajaLocal;
 import com.aguatzi.sistemaAguatzi.entidades.Usuario;
+import com.aguatzi.sistemaAguatzi.vista.FrmMenuPrincipalAdmin;
 import com.aguatzi.sistemaAguatzi.vista.FrmReporteVentas;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -40,177 +41,210 @@ import java.util.List;
  * @author mig_2
  */
 public class ControladorReporteVentas {
-	
-	private final FrmReporteVentas frmReporteVentas;
-	private final Usuario usuario;
-    	private final UnitOfWork unitOfWork;
 
-	private final float PRECIO_GARRAFON_RELLEANDO = 13;
-	private final float PRECIO_GARRAFON_NUEVO = 100;
-	private final float CAPACIDAD_GARRAFON = 19.5f;
-	
-	public ControladorReporteVentas(FrmReporteVentas frmReporteVentas, Usuario usuario) {
-		this.frmReporteVentas = frmReporteVentas;
-		this.usuario = usuario;
-		this.frmReporteVentas.agregarGenerarListener(new GenerarListener());
-		this.frmReporteVentas.agregarDetalladoListener(new DetalladoListener());
-		unitOfWork = new UnitOfWork();
-	}
+    private final FrmReporteVentas frmReporteVentas;
+    private final Usuario usuario;
+    private final UnitOfWork unitOfWork;
 
-	class GenerarListener implements ActionListener {
+    private final float PRECIO_GARRAFON_RELLEANDO = 13;
+    private final float PRECIO_GARRAFON_NUEVO = 100;
+    private final float CAPACIDAD_GARRAFON = 19.5f;
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			LocalDate fechaInicial=frmReporteVentas.getFechaInicial();
-			LocalDate fechaFinal=frmReporteVentas.getFechaFinal();
-			if (fechaInicial != null && fechaFinal != null) {
-				Date fechaInicialDate = Date.from(fechaInicial.atStartOfDay(ZoneId.systemDefault()).toInstant());
-				Date fechaFinalDate = Date.from(fechaFinal.atStartOfDay(ZoneId.systemDefault()).toInstant());
-				List<Object[]> resultados=unitOfWork.cclRepository().obtenerSumaDetallesPorFecha(fechaInicialDate, fechaFinalDate);
-			    	Object[] resultado = resultados.get(0);
-    				long cantidadGarrafonesVendidos = (long) resultado[0];
-			        long cantidadGarrafonesPagadosTransferencia = (long) resultado[1];
-    				long cantidadGarrafonesNuevos= (long) resultado[2];
-    				long cantidadGarrafonesVaciados = (long) resultado[3];
-				float totalGarrafonesVendidos = cantidadGarrafonesVendidos*PRECIO_GARRAFON_RELLEANDO;
-				float totalGarrafonesNuevos= cantidadGarrafonesNuevos*PRECIO_GARRAFON_NUEVO;
-				float totalGarrafonesPagadosTransferencia= cantidadGarrafonesPagadosTransferencia*PRECIO_GARRAFON_RELLEANDO; 
-				float totalGarrafonesVaciados =cantidadGarrafonesVaciados*PRECIO_GARRAFON_RELLEANDO;
-    				double litrosVendidos = (double) resultado[4];
-    				double dineroTotal = (double) resultado[5];
-				frmReporteVentas.setCantidadGarrafonesVendidos(Long.toString(cantidadGarrafonesVendidos));
-				frmReporteVentas.setCantidadGarrafonesNuevos(Long.toString(cantidadGarrafonesNuevos));
-				frmReporteVentas.setCantidadGarrafonesVaciados(Long.toString(cantidadGarrafonesVaciados));
-				frmReporteVentas.setCantidadGarrafonesPagadosTransferencia(Long.toString(cantidadGarrafonesPagadosTransferencia));
-				frmReporteVentas.setTotalLitrosVendidos(Double.toString(litrosVendidos));
-				frmReporteVentas.setTotalGarrafonesVendidos(Float.toString(totalGarrafonesVendidos));
-				frmReporteVentas.setTotalGarrafonesNuevos(Float.toString(totalGarrafonesNuevos));
-				frmReporteVentas.setTotalGarrafonesPagadosTransferencia(Float.toString(totalGarrafonesPagadosTransferencia));
-				frmReporteVentas.setTotalGarrafonesVaciados(Float.toString(totalGarrafonesVaciados));
-				frmReporteVentas.setDineroVentaTotal(Double.toString(dineroTotal));
-			}
-		}
-    	}
-	
-	class DetalladoListener implements ActionListener {
+    public ControladorReporteVentas(FrmReporteVentas frmReporteVentas, Usuario usuario) {
+        this.frmReporteVentas = frmReporteVentas;
+        this.usuario = usuario;
+        this.frmReporteVentas.agregarGenerarListener(new GenerarListener());
+        this.frmReporteVentas.agregarDetalladoListener(new DetalladoListener());
+        unitOfWork = new UnitOfWork();
+    }
 
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			LocalDate fechaInicial=frmReporteVentas.getFechaInicial();
-			LocalDate fechaFinal=frmReporteVentas.getFechaFinal();
-			if (fechaInicial != null && fechaFinal != null) {
-				Date fechaInicialDate = Date.from(fechaInicial.atStartOfDay(ZoneId.systemDefault()).toInstant());
-				Date fechaFinalDate = Date.from(fechaFinal.atStartOfDay(ZoneId.systemDefault()).toInstant());
-				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-				String fechaInicialStr = sdf.format(fechaInicialDate);
-				String fechaFinalStr = sdf.format(fechaFinalDate);
-				List<CierreCajaLocal> resultado = unitOfWork.cclRepository().obtnerEnRangoDeFechas(fechaInicialDate, fechaFinalDate);
-				String nombreUsuario = System.getProperty("user.name");
-				// Definir la ruta del archivo PDF con el nombre de usuario
-				String rutaArchivo = "C:\\Users\\" + nombreUsuario + "\\Aguatzi\\reporte"+fechaInicialStr+""+fechaFinalStr+".pdf";
-				generarPDF(resultado, rutaArchivo);
-			}
-		}
+    class GenerarListener implements ActionListener {
 
-    	}
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (frmReporteVentas.CampoVacio() == true) {
+                frmReporteVentas.mostrarMensaje("Seleccione fechas de reporte");
+                return;
+            }
+            LocalDate fechaInicial = frmReporteVentas.getFechaInicial();
+            LocalDate fechaFinal = frmReporteVentas.getFechaFinal();
 
-	public void generarPDF(List<CierreCajaLocal> cierres, String rutaArchivo) {
-		Document documento = new Document();
+            if (fechaInicial != null && fechaFinal != null) {
+             
+                Date fechaInicialDate = Date.from(fechaInicial.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                Date fechaFinalDate = Date.from(fechaFinal.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                List<Object[]> resultados = unitOfWork.cclRepository().obtenerSumaDetallesPorFecha(fechaInicialDate, fechaFinalDate);
+                Object[] resultado = resultados.get(0);
+                long cantidadGarrafonesVendidos = (long) resultado[0];
+                long cantidadGarrafonesPagadosTransferencia = (long) resultado[1];
+                long cantidadGarrafonesNuevos = (long) resultado[2];
+                long cantidadGarrafonesVaciados = (long) resultado[3];
+                float totalGarrafonesVendidos = cantidadGarrafonesVendidos * PRECIO_GARRAFON_RELLEANDO;
+                float totalGarrafonesNuevos = cantidadGarrafonesNuevos * PRECIO_GARRAFON_NUEVO;
+                float totalGarrafonesPagadosTransferencia = cantidadGarrafonesPagadosTransferencia * PRECIO_GARRAFON_RELLEANDO;
+                float totalGarrafonesVaciados = cantidadGarrafonesVaciados * PRECIO_GARRAFON_RELLEANDO;
+                double litrosVendidos = (double) resultado[4];
+                double dineroTotal = (double) resultado[5];
+                frmReporteVentas.setCantidadGarrafonesVendidos(Long.toString(cantidadGarrafonesVendidos));
+                frmReporteVentas.setCantidadGarrafonesNuevos(Long.toString(cantidadGarrafonesNuevos));
+                frmReporteVentas.setCantidadGarrafonesVaciados(Long.toString(cantidadGarrafonesVaciados));
+                frmReporteVentas.setCantidadGarrafonesPagadosTransferencia(Long.toString(cantidadGarrafonesPagadosTransferencia));
+                frmReporteVentas.setTotalLitrosVendidos(Double.toString(litrosVendidos));
+                frmReporteVentas.setTotalGarrafonesVendidos("$ " + Float.toString(totalGarrafonesVendidos));
+                frmReporteVentas.setTotalGarrafonesNuevos("$ " + Float.toString(totalGarrafonesNuevos));
+                frmReporteVentas.setTotalGarrafonesPagadosTransferencia("$ " + Float.toString(totalGarrafonesPagadosTransferencia));
+                frmReporteVentas.setTotalGarrafonesVaciados("$ -" + Float.toString(totalGarrafonesVaciados));
+                frmReporteVentas.setDineroVentaTotal("$ " + Double.toString(dineroTotal));
+            }
+        }
+    }
 
-		try {
-		    // Crear automáticamente la carpeta si no existe
-		    File carpeta = new File(rutaArchivo).getParentFile();
-		    if (!carpeta.exists()) {
-			carpeta.mkdirs();
-		    }
+    class DetalladoListener implements ActionListener {
 
-		    PdfWriter.getInstance(documento, new FileOutputStream(rutaArchivo));
-		    documento.open();
-
-		    // Agregar un encabezado al PDF
-		    agregarEncabezado(documento);
-
-		    PdfPTable tabla = new PdfPTable(13); // 13 columnas en tu clase
-		    tabla.setWidthPercentage(100); // Hacer que la tabla ocupe el ancho completo del documento
-
-		    // Agregar encabezados de la tabla
-		    agregarEncabezadoTabla(tabla);
-
-		    // Agregar datos
-		    for (CierreCajaLocal cierre : cierres) {
-			agregarFilaTabla(tabla, cierre);
-		    }
-
-		    documento.add(tabla);
-		    documento.close();
-
-		    // Abrir el PDF después de crearlo
-		    abrirPDF(rutaArchivo);
-
-		    System.out.println("PDF generado exitosamente en: " + rutaArchivo);
-		} catch (DocumentException e) {
-		    e.printStackTrace();
-		} catch (Exception e) {
-		    e.printStackTrace();
-		}
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            LocalDate fechaInicial = frmReporteVentas.getFechaInicial();
+            LocalDate fechaFinal = frmReporteVentas.getFechaFinal();
+            if (fechaInicial != null && fechaFinal != null) {
+                Date fechaInicialDate = Date.from(fechaInicial.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                Date fechaFinalDate = Date.from(fechaFinal.atStartOfDay(ZoneId.systemDefault()).toInstant());
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String fechaInicialStr = sdf.format(fechaInicialDate);
+                String fechaFinalStr = sdf.format(fechaFinalDate);
+                List<CierreCajaLocal> resultado = unitOfWork.cclRepository().obtnerEnRangoDeFechas(fechaInicialDate, fechaFinalDate);
+                String nombreUsuario = System.getProperty("user.name");
+                // Definir la ruta del archivo PDF con el nombre de usuario
+                String rutaArchivo = "C:\\Users\\" + nombreUsuario + "\\Aguatzi\\reporte" + fechaInicialStr + "" + fechaFinalStr + ".pdf";
+                generarPDF(resultado, rutaArchivo);
+            }
         }
 
-	private void agregarEncabezado(Document documento) throws DocumentException {
-		Font fontEncabezado = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 16, BaseColor.BLACK);
+    }
 
-		Paragraph encabezado = new Paragraph("Informe de Cierres de Caja", fontEncabezado);
-		encabezado.setAlignment(Element.ALIGN_CENTER);
+    class CancelarListener implements ActionListener {
 
-		documento.add(encabezado);
-		documento.add(Chunk.NEWLINE); // Agregar espacio después del encabezado
-	}
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int respuesta = frmReporteVentas.mostrarMensajeConfirmacion("¿Seguro que desea cancelar el cierre de caja?");
+            if (respuesta != 0) {
+                return;
+            }
+            frmReporteVentas.eliminarVentana();
+            String tipoUsuario = usuario.getTipoUsuario();
+            switch (tipoUsuario) {
+                case "admin":
+                    FrmMenuPrincipalAdmin frmMenuPrincipalAdmin = new FrmMenuPrincipalAdmin();
+                    ControladorMenuPrincipalAdmin controladorMenuPrincipalAdmin = new ControladorMenuPrincipalAdmin(frmMenuPrincipalAdmin, usuario);
+                    frmMenuPrincipalAdmin.setVisible(true);
+                    break;
+                default:
+                    throw new AssertionError();
+            }
+        }
+    }
 
-	
-	private void agregarEncabezadoTabla(PdfPTable tabla) {
-		String[] encabezados = {"ID", "Lectura Medidor", "Lectura Anterior", "Garrafones Repartidor", "Garrafones Vaciados",
-			"Pagados Transferencia", "Garrafones Nuevos Vendidos", "Dinero Caja", "Litros Vendidos",
-			"Garrafones Vendidos", "Dinero Total", "Faltante", "Fecha"};
+    class LimpiarListener implements ActionListener {
 
-		for (String encabezado : encabezados) {
-		    PdfPCell celda = new PdfPCell();
-		    celda.setPhrase(new Phrase(encabezado));
-		    tabla.addCell(celda);
-		}
-	}
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            frmReporteVentas.limpiar();
+        }
+    }
 
-	private static void abrirPDF(String rutaArchivo) {
-		try {
-		    File archivoPDF = new File(rutaArchivo);
+    public void generarPDF(List<CierreCajaLocal> cierres, String rutaArchivo) {
+        Document documento = new Document();
 
-		    // Verificar si Desktop es compatible y el archivo existe
-		    if (Desktop.isDesktopSupported() && archivoPDF.exists()) {
-			Desktop.getDesktop().open(archivoPDF);
-		    } else {
-			System.out.println("No se pudo abrir el archivo PDF.");
-		    }
-		} catch (IOException e) {
-		    e.printStackTrace();
-		}
-	}
+        try {
+            // Crear automáticamente la carpeta si no existe
+            File carpeta = new File(rutaArchivo).getParentFile();
+            if (!carpeta.exists()) {
+                carpeta.mkdirs();
+            }
 
+            PdfWriter.getInstance(documento, new FileOutputStream(rutaArchivo));
+            documento.open();
 
-	private void agregarFilaTabla(PdfPTable tabla, CierreCajaLocal cierre) {
-		SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+            // Agregar un encabezado al PDF
+            agregarEncabezado(documento);
 
-		tabla.addCell(String.valueOf(cierre.getIdCierreCajaLocal()));
-		tabla.addCell(String.valueOf(cierre.getLecturaMedidor()));
-		tabla.addCell(String.valueOf(cierre.getLecturaAnterior()));
-		tabla.addCell(String.valueOf(cierre.getGarrafonesRepartidor()));
-		tabla.addCell(String.valueOf(cierre.getGarrafonesVaciados()));
-		tabla.addCell(String.valueOf(cierre.getPagadosTransferencia()));
-		tabla.addCell(String.valueOf(cierre.getGarrafonesNuevosVendidos()));
-		tabla.addCell(String.valueOf(cierre.getDineroCaja()));
-		tabla.addCell(String.valueOf(cierre.getLitrosVendidos()));
-		tabla.addCell(String.valueOf(cierre.getGarrafonesVendidos()));
-		tabla.addCell(String.valueOf(cierre.getDineroTotal()));
-		tabla.addCell(String.valueOf(cierre.getFaltante()));
-		tabla.addCell(formatoFecha.format(cierre.getFecha()));
-	}
+            PdfPTable tabla = new PdfPTable(13); // 13 columnas en tu clase
+            tabla.setWidthPercentage(100); // Hacer que la tabla ocupe el ancho completo del documento
 
+            // Agregar encabezados de la tabla
+            agregarEncabezadoTabla(tabla);
+
+            // Agregar datos
+            for (CierreCajaLocal cierre : cierres) {
+                agregarFilaTabla(tabla, cierre);
+            }
+
+            documento.add(tabla);
+            documento.close();
+
+            // Abrir el PDF después de crearlo
+            abrirPDF(rutaArchivo);
+
+            System.out.println("PDF generado exitosamente en: " + rutaArchivo);
+        } catch (DocumentException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void agregarEncabezado(Document documento) throws DocumentException {
+        Font fontEncabezado = FontFactory.getFont(FontFactory.HELVETICA_BOLD, 16, BaseColor.BLACK);
+
+        Paragraph encabezado = new Paragraph("Informe de Cierres de Caja", fontEncabezado);
+        encabezado.setAlignment(Element.ALIGN_CENTER);
+
+        documento.add(encabezado);
+        documento.add(Chunk.NEWLINE); // Agregar espacio después del encabezado
+    }
+
+    private void agregarEncabezadoTabla(PdfPTable tabla) {
+        String[] encabezados = {"ID", "Lectura Medidor", "Lectura Anterior", "Garrafones Repartidor", "Garrafones Vaciados",
+            "Pagados Transferencia", "Garrafones Nuevos Vendidos", "Dinero Caja", "Litros Vendidos",
+            "Garrafones Vendidos", "Dinero Total", "Faltante", "Fecha"};
+
+        for (String encabezado : encabezados) {
+            PdfPCell celda = new PdfPCell();
+            celda.setPhrase(new Phrase(encabezado));
+            tabla.addCell(celda);
+        }
+    }
+
+    private static void abrirPDF(String rutaArchivo) {
+        try {
+            File archivoPDF = new File(rutaArchivo);
+
+            // Verificar si Desktop es compatible y el archivo existe
+            if (Desktop.isDesktopSupported() && archivoPDF.exists()) {
+                Desktop.getDesktop().open(archivoPDF);
+            } else {
+                System.out.println("No se pudo abrir el archivo PDF.");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void agregarFilaTabla(PdfPTable tabla, CierreCajaLocal cierre) {
+        SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
+
+        tabla.addCell(String.valueOf(cierre.getIdCierreCajaLocal()));
+        tabla.addCell(String.valueOf(cierre.getLecturaMedidor()));
+        tabla.addCell(String.valueOf(cierre.getLecturaAnterior()));
+        tabla.addCell(String.valueOf(cierre.getGarrafonesRepartidor()));
+        tabla.addCell(String.valueOf(cierre.getGarrafonesVaciados()));
+        tabla.addCell(String.valueOf(cierre.getPagadosTransferencia()));
+        tabla.addCell(String.valueOf(cierre.getGarrafonesNuevosVendidos()));
+        tabla.addCell(String.valueOf(cierre.getDineroCaja()));
+        tabla.addCell(String.valueOf(cierre.getLitrosVendidos()));
+        tabla.addCell(String.valueOf(cierre.getGarrafonesVendidos()));
+        tabla.addCell(String.valueOf(cierre.getDineroTotal()));
+        tabla.addCell(String.valueOf(cierre.getFaltante()));
+        tabla.addCell(formatoFecha.format(cierre.getFecha()));
+    }
 
 }
