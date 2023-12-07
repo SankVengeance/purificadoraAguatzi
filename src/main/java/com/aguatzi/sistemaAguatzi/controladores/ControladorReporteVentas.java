@@ -14,6 +14,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 import com.aguatzi.sistemaAguatzi.entidades.CierreCajaLocal;
 import com.aguatzi.sistemaAguatzi.entidades.Usuario;
 import com.aguatzi.sistemaAguatzi.vista.FrmMenuPrincipalAdmin;
+import com.aguatzi.sistemaAguatzi.vista.FrmMenuPrincipalLocal;
 import com.aguatzi.sistemaAguatzi.vista.FrmReporteVentas;
 import com.itextpdf.text.BaseColor;
 import com.itextpdf.text.Chunk;
@@ -55,6 +56,8 @@ public class ControladorReporteVentas {
         this.usuario = usuario;
         this.frmReporteVentas.agregarGenerarListener(new GenerarListener());
         this.frmReporteVentas.agregarDetalladoListener(new DetalladoListener());
+	this.frmReporteVentas.agregarLimpiarListener(new LimpiarListener());
+	this.frmReporteVentas.agregarCancelarListener(new CancelarListener());
         unitOfWork = new UnitOfWork();
     }
 
@@ -62,40 +65,44 @@ public class ControladorReporteVentas {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (frmReporteVentas.CampoVacio() == true) {
-                frmReporteVentas.mostrarMensaje("Seleccione fechas de reporte");
-                return;
-            }
-            LocalDate fechaInicial = frmReporteVentas.getFechaInicial();
-            LocalDate fechaFinal = frmReporteVentas.getFechaFinal();
-
-            if (fechaInicial != null && fechaFinal != null) {
-             
-                Date fechaInicialDate = Date.from(fechaInicial.atStartOfDay(ZoneId.systemDefault()).toInstant());
-                Date fechaFinalDate = Date.from(fechaFinal.atStartOfDay(ZoneId.systemDefault()).toInstant());
-                List<Object[]> resultados = unitOfWork.cclRepository().obtenerSumaDetallesPorFecha(fechaInicialDate, fechaFinalDate);
-                Object[] resultado = resultados.get(0);
-                long cantidadGarrafonesVendidos = (long) resultado[0];
-                long cantidadGarrafonesPagadosTransferencia = (long) resultado[1];
-                long cantidadGarrafonesNuevos = (long) resultado[2];
-                long cantidadGarrafonesVaciados = (long) resultado[3];
-                float totalGarrafonesVendidos = cantidadGarrafonesVendidos * PRECIO_GARRAFON_RELLEANDO;
-                float totalGarrafonesNuevos = cantidadGarrafonesNuevos * PRECIO_GARRAFON_NUEVO;
-                float totalGarrafonesPagadosTransferencia = cantidadGarrafonesPagadosTransferencia * PRECIO_GARRAFON_RELLEANDO;
-                float totalGarrafonesVaciados = cantidadGarrafonesVaciados * PRECIO_GARRAFON_RELLEANDO;
-                double litrosVendidos = (double) resultado[4];
-                double dineroTotal = (double) resultado[5];
-                frmReporteVentas.setCantidadGarrafonesVendidos(Long.toString(cantidadGarrafonesVendidos));
-                frmReporteVentas.setCantidadGarrafonesNuevos(Long.toString(cantidadGarrafonesNuevos));
-                frmReporteVentas.setCantidadGarrafonesVaciados(Long.toString(cantidadGarrafonesVaciados));
-                frmReporteVentas.setCantidadGarrafonesPagadosTransferencia(Long.toString(cantidadGarrafonesPagadosTransferencia));
-                frmReporteVentas.setTotalLitrosVendidos(Double.toString(litrosVendidos));
-                frmReporteVentas.setTotalGarrafonesVendidos("$ " + Float.toString(totalGarrafonesVendidos));
-                frmReporteVentas.setTotalGarrafonesNuevos("$ " + Float.toString(totalGarrafonesNuevos));
-                frmReporteVentas.setTotalGarrafonesPagadosTransferencia("$ " + Float.toString(totalGarrafonesPagadosTransferencia));
-                frmReporteVentas.setTotalGarrafonesVaciados("$ -" + Float.toString(totalGarrafonesVaciados));
-                frmReporteVentas.setDineroVentaTotal("$ " + Double.toString(dineroTotal));
-            }
+		if (frmReporteVentas.CampoVacio()) {
+			frmReporteVentas.mostrarMensaje("Seleccione fechas de reporte");
+			return;
+		}
+		if (frmReporteVentas.rangoFechasInvalido()) {
+			frmReporteVentas.mostrarMensaje("Seleeccione un rango de fechas valido");
+			return;
+		}
+		LocalDate fechaInicial = frmReporteVentas.getFechaInicial();
+		LocalDate fechaFinal = frmReporteVentas.getFechaFinal();
+		Date fechaInicialDate = Date.from(fechaInicial.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		Date fechaFinalDate = Date.from(fechaFinal.atStartOfDay(ZoneId.systemDefault()).toInstant());
+		List<Object[]> resultados = unitOfWork.cclRepository().obtenerSumaDetallesPorFecha(fechaInicialDate, fechaFinalDate);
+		Object[] resultado = resultados.get(0);
+		if (resultado[0]==null) {
+			frmReporteVentas.mostrarMensaje("No existen cierres de caja en este rango de fechas");
+			return;
+		}
+		long cantidadGarrafonesVendidos = (long) resultado[0];
+		long cantidadGarrafonesPagadosTransferencia = (long) resultado[1];
+		long cantidadGarrafonesNuevos = (long) resultado[2];
+		long cantidadGarrafonesVaciados = (long) resultado[3];
+		float totalGarrafonesVendidos = cantidadGarrafonesVendidos * PRECIO_GARRAFON_RELLEANDO;
+		float totalGarrafonesNuevos = cantidadGarrafonesNuevos * PRECIO_GARRAFON_NUEVO;
+		float totalGarrafonesPagadosTransferencia = cantidadGarrafonesPagadosTransferencia * PRECIO_GARRAFON_RELLEANDO;
+		float totalGarrafonesVaciados = cantidadGarrafonesVaciados * PRECIO_GARRAFON_RELLEANDO;
+		double litrosVendidos = (double) resultado[4];
+		double dineroTotal = (double) resultado[5];
+		frmReporteVentas.setCantidadGarrafonesVendidos(Long.toString(cantidadGarrafonesVendidos));
+		frmReporteVentas.setCantidadGarrafonesNuevos(Long.toString(cantidadGarrafonesNuevos));
+		frmReporteVentas.setCantidadGarrafonesVaciados(Long.toString(cantidadGarrafonesVaciados));
+		frmReporteVentas.setCantidadGarrafonesPagadosTransferencia(Long.toString(cantidadGarrafonesPagadosTransferencia));
+		frmReporteVentas.setTotalLitrosVendidos(Double.toString(litrosVendidos));
+		frmReporteVentas.setTotalGarrafonesVendidos("$ " + Float.toString(totalGarrafonesVendidos));
+		frmReporteVentas.setTotalGarrafonesNuevos("$ " + Float.toString(totalGarrafonesNuevos));
+		frmReporteVentas.setTotalGarrafonesPagadosTransferencia("$ " + Float.toString(totalGarrafonesPagadosTransferencia));
+		frmReporteVentas.setTotalGarrafonesVaciados("$ -" + Float.toString(totalGarrafonesVaciados));
+		frmReporteVentas.setDineroVentaTotal("$ " + Double.toString(dineroTotal));
         }
     }
 
@@ -136,6 +143,11 @@ public class ControladorReporteVentas {
                     FrmMenuPrincipalAdmin frmMenuPrincipalAdmin = new FrmMenuPrincipalAdmin();
                     ControladorMenuPrincipalAdmin controladorMenuPrincipalAdmin = new ControladorMenuPrincipalAdmin(frmMenuPrincipalAdmin, usuario);
                     frmMenuPrincipalAdmin.setVisible(true);
+                    break;
+                case "local":
+                    FrmMenuPrincipalLocal frmMenuPrincipalLocal = new FrmMenuPrincipalLocal();
+                    ControladorMenuPrincipalLocal controladorMenuPrincipalLocal = new ControladorMenuPrincipalLocal(frmMenuPrincipalLocal, usuario);
+                    frmMenuPrincipalLocal.setVisible(true);
                     break;
                 default:
                     throw new AssertionError();

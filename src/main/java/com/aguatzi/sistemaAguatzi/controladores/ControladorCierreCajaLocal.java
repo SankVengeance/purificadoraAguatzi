@@ -89,10 +89,10 @@ public class ControladorCierreCajaLocal {
             int pagosTransferencia = Integer.parseInt(frmCierreCajaLocal.getPagadosTrasferencia());
             int garrafonesNuevos = Integer.parseInt(frmCierreCajaLocal.getGarrafonesNuevos());
             float dineroCaja = Float.parseFloat(frmCierreCajaLocal.getDineroCaja());
-            float litrosVendidos = lecturaAnterior - lecturaMedidor - garrafonesVaciados * CAPACIDAD_GARRAFON;
-            float garrafonesVendidos = litrosVendidos / CAPACIDAD_GARRAFON - garrafonesRuta;
+            float garrafonesVendidos = (lecturaAnterior-lecturaMedidor) / CAPACIDAD_GARRAFON - garrafonesRuta;
             int garrafonesVendidosRedondeado = (int) garrafonesVendidos;
-            float dineroTotal = garrafonesVendidos * PRECIO_GARRAFON_RELLEANDO + garrafonesNuevos * PRECIO_GARRAFON_NUEVO - pagosTransferencia * PRECIO_GARRAFON_RELLEANDO;
+            float litrosVendidos = garrafonesVendidosRedondeado*CAPACIDAD_GARRAFON;
+            float dineroTotal = garrafonesVendidosRedondeado * PRECIO_GARRAFON_RELLEANDO + garrafonesNuevos * PRECIO_GARRAFON_NUEVO - pagosTransferencia * PRECIO_GARRAFON_RELLEANDO;
             float dineroFaltante = dineroTotal - dineroCaja;
             Empleado empleado = unitOfWork.empleadosRepository().obtenerPorUsuario(usuario);
             int respuesta = frmCierreCajaLocal.mostrarMensajeConfirmacion("Resumen de cierre de caja" + "\nLitros vendidos: " + frmCierreCajaLocal.getLitrosVendidos() + "\nGarrafones vendidos: " + frmCierreCajaLocal.getGarrafonesVendidos() + "\nDinero en caja: " + frmCierreCajaLocal.getDineroCaja() + "\nDinero venta total:" + frmCierreCajaLocal.getDineroTotal() + "\nFaltante: " + frmCierreCajaLocal.getFaltante() + "\n¿Seguro que desea guardar el cierre de caja actual?"
