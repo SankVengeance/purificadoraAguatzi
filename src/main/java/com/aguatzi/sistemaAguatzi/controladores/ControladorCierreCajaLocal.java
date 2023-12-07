@@ -55,9 +55,8 @@ public class ControladorCierreCajaLocal {
             float dineroCaja = Float.parseFloat(frmCierreCajaLocal.getDineroCaja());
             float litrosVendidos = lecturaAnterior - lecturaMedidor - garrafonesVaciados * CAPACIDAD_GARRAFON;
             frmCierreCajaLocal.setLitrosVendidos(String.valueOf(litrosVendidos));
-            float garrafonesVendidos = litrosVendidos / CAPACIDAD_GARRAFON - garrafonesRuta;
-            int garrafonesVendidosRedondeado = (int) garrafonesVendidos;
-            frmCierreCajaLocal.setGarrafonesVendidos(String.valueOf(garrafonesVendidosRedondeado));
+            float garrafonesVendidos = Math.round(litrosVendidos / CAPACIDAD_GARRAFON - garrafonesRuta); 
+            frmCierreCajaLocal.setGarrafonesVendidos(String.valueOf(garrafonesVendidos));
             float dineroTotal = garrafonesVendidos * PRECIO_GARRAFON_RELLEANDO + garrafonesNuevos * PRECIO_GARRAFON_NUEVO - pagosTransferencia * PRECIO_GARRAFON_RELLEANDO;
             frmCierreCajaLocal.setDineroTotal(String.valueOf(dineroTotal));
             float dineroFaltante = dineroTotal - dineroCaja;

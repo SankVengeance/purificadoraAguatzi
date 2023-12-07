@@ -132,7 +132,7 @@ public class ControladorReporteVentas {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            int respuesta = frmReporteVentas.mostrarMensajeConfirmacion("¿Seguro que desea cancelar el cierre de caja?");
+            int respuesta = frmReporteVentas.mostrarMensajeConfirmacion("¿Seguro que desea cancelar el reporte de ventas?");
             if (respuesta != 0) {
                 return;
             }

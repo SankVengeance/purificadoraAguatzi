@@ -21,11 +21,11 @@ public class AgregarUsuario {
      */
     public static void main(String[] args) {
         UnitOfWork unitOfWork = new UnitOfWork();
-        String contrasenia = Encriptador.encriptarPassword("admin");
-        Usuario usuario = new Usuario("Pepe", contrasenia, "admin");
+        String contrasenia = Encriptador.encriptarPassword("local");
+        Usuario usuario = new Usuario("Juan", contrasenia, "local");
         unitOfWork.usuariosRepository().agregar(usuario);
         
-        Empleado empleado = new Empleado("Pepe", "Lopez", "Lopez", "isla", "6444477841", "Admin", usuario);
+        Empleado empleado = new Empleado("Juan", "Lopez", "Lopez", "isla", "6444477841", "Local", usuario);
         unitOfWork.empleadosRepository().agregar(empleado);
     }
     
